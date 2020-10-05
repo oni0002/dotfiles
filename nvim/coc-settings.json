@@ -1,0 +1,73 @@
+{
+    "coc.preferences.formatOnSaveFiletypes": ["python"],
+
+    "python.jediEnabled":false,
+    "python.linting.pylintEnabled":false,
+    "python.linting.flake8Enabled":true,
+    "python.linting.flake8Args":["--ignore=E501,E203"],
+    "python.formatting.provider": "black",
+
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ],
+            "rootPatterns": [
+                ".ccls",
+                "compile_commands.json",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                }
+            }
+        }
+    },
+    "explorer.keyMappings": {
+        "*": "toggleSelection",
+        "J": ["toggleSelection", "nodeNext"],
+        "K": ["toggleSelection", "nodePrev"],
+        "<tab>": "actionMenu",
+
+        "<cr>": [
+            "expandable?",
+            ["expanded?", "collapse", "expand"],
+            "open"
+        ],
+        "<bs>": "gotoParent",
+
+        "s": "open:split",
+        "v": "open:vsplit",
+        "t": "open:tab",
+
+        "y": "copyFilepath",
+        "Y": "copyFilename",
+        "c": "copyFile",
+        "x": "cutFile",
+        "p": "pasteFile",
+        "d": "delete",
+
+        "a": "addFile",
+        "A": "addDirectory",
+        "r": "rename",
+
+        ".": "toggleHidden",
+        "R": "refresh",
+
+        "?": "help",
+        "q": "quit",
+        "<esc>": "esc",
+        "X": "systemExecute",
+        "gd": "listDrive",
+
+        "f": "search",
+        "F": "searchRecursive"
+  }
+}
