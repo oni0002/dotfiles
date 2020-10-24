@@ -76,4 +76,4 @@ let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 
 " S{key}{key} to jump
-nmap S <Plug>(easymotion-overwin-f2)
+nmap <leader>s <Plug>(easymotion-overwin-f2)
