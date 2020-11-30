@@ -56,5 +56,5 @@ nnoremap <leader>ra :%s///g<left><left><left>
 nnoremap <leader>rc :%s///gc<left><left><left><left>
 
 " exit insert
-inoremap jj <esc>
-tnoremap jj <c-\><c-n>
+inoremap jk <esc>
+tnoremap jk <c-\><c-n>

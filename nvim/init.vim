@@ -3,6 +3,7 @@ let g:python3_host_prog = '~/.venvs/nvimenv3/bin/python'
 " let g:python_host_prog = expand('~/pynvim2/bin/python')
 " leader key: ,
 let mapleader = ','
+let maplocalleader = '<'
 
 " plugins
 source ~/.config/nvim/plugins.vim

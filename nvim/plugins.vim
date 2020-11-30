@@ -27,7 +27,15 @@ Plug 'tyru/caw.vim'
 " movement efficiently
 Plug 'easymotion/vim-easymotion'
 
+" markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+" pandoc's style markdown
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+
 " vim org-mode
 Plug 'jceb/vim-orgmode'
+" rubocop
+Plug 'ngmy/vim-rubocop'
 
 call plug#end()
