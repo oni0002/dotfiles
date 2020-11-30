@@ -17,11 +17,11 @@ abbr -a brrm brew uninstall  # uninstall(remove)
 abbr -a brcle brew cleanup  # clean
 abbr -a brl brew list  # list
 ## brew cask
-abbr -a brc brew cask
-abbr -a brcupg brew cask upgrade  # upgrade
-abbr -a brcins brew cask install  # install 
-abbr -a brcrm brew cask uninstall  #uninstall
-abbr -a brcl brew cask list  # list
+# abbr -a brc brew cask
+# abbr -a brcupg brew cask upgrade  # upgrade
+# abbr -a brcins brew cask install  # install 
+# abbr -a brcrm brew cask uninstall  #uninstall
+abbr -a brcl brew list --cask  # list
 ## apt
 abbr -a apupd sudo apt update  # update
 abbr -a apupg sudo apt upgrade  # upgrade

@@ -23,7 +23,7 @@ SETUVAR _fish_abbr_apupg:sudo\x20apt\x20upgrade
 SETUVAR _fish_abbr_br:brew
 SETUVAR _fish_abbr_brc:brew\x20cask
 SETUVAR _fish_abbr_brcins:brew\x20cask\x20install
-SETUVAR _fish_abbr_brcl:brew\x20cask\x20list
+SETUVAR _fish_abbr_brcl:brew\x20list\x20\x2d\x2dcask
 SETUVAR _fish_abbr_brcle:brew\x20cleanup
 SETUVAR _fish_abbr_brcrm:brew\x20cask\x20uninstall
 SETUVAR _fish_abbr_brcupg:brew\x20cask\x20upgrade

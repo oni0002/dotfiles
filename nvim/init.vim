@@ -14,11 +14,12 @@ source ~/.config/nvim/keymap.vim
 
 " colorscheme
 " colorscheme yowish
+set termguicolors
+let ayucolor="dark"
 colorscheme ayu
 
-set background=dark
-set t_Co=256
-set termguicolors
+" set background=dark
+" set t_Co=256
 
 " don't automatically collapse markdown and LaTeX
 set conceallevel=0
