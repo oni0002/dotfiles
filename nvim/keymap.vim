@@ -1,3 +1,7 @@
+" leader key: ,
+let mapleader = ','
+let maplocalleader = '<'
+
 " save
 nnoremap <leader>w :w!<cr>
 nnoremap <leader>q :q<cr>
@@ -45,6 +49,9 @@ noremap H ^
 noremap J }
 noremap K {
 noremap L $
+
+inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
 
 " scroll
 noremap mj zb

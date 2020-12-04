@@ -47,6 +47,7 @@ SETUVAR _fish_abbr_gcom:git\x20commit\x20\x2dm
 SETUVAR _fish_abbr_gfet:git\x20fetch
 SETUVAR _fish_abbr_gl:git\x20log\x20\x2d\x2doneline
 SETUVAR _fish_abbr_glog:git\x20log\x20\x2d\x2doneline
+SETUVAR _fish_abbr_gls:git\x20ls\x2dfiles
 SETUVAR _fish_abbr_gp:git\x20push
 SETUVAR _fish_abbr_gpl:git\x20pull
 SETUVAR _fish_abbr_gpul:git\x20pull

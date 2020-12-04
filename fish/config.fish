@@ -50,6 +50,7 @@ abbr -a gref git reflog
 abbr -a gfet git fetch
 abbr -a gres git reset
 abbr -a gpul git pull
+abbr -a gls git ls-files
 
 # rbenv
 rbenv init - | source
