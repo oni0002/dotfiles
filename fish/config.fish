@@ -62,5 +62,10 @@ abbr -a fiins fisher install
 abbr -a firm fisher remove
 abbr -a fils fisher ls
 
-# rbenv
+## other
+abbr -a lg lazygit
+
+
+# other
+## rbenv
 rbenv init - | source

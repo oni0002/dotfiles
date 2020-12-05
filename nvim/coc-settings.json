@@ -1,4 +1,3 @@
-
 {
     "coc.preferences.formatOnType": true,
     "coc.preferences.formatOnSaveFiletypes": [
@@ -15,16 +14,23 @@
     ],
     "python.formatting.provider": "black",
     "explorer.keyMappings.global": {
+        "i": false, // cancel default mapkey
         "*": "toggleSelection",
+        "<tab>": "actionMenu",
+        "h": "collapse",
+        "l": [
+            "expandable?",
+            "expand",
+            "open"
+        ],
         "J": [
             "toggleSelection",
-            "nodeNext"
+            "normal:j"
         ],
         "K": [
             "toggleSelection",
-            "nodePrev"
+            "normal:k"
         ],
-        "<tab>": "actionMenu",
         "<cr>": [
             "expandable?",
             [
