@@ -11,6 +11,7 @@ call plug#begin()
 " general functionality{{{
     " coc: Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode {{{
         Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
         " global extensions
         let g:coc_global_extensions = [
                     \'coc-snippets',
@@ -24,6 +25,7 @@ call plug#begin()
                     \'coc-html',
                     \'coc-css',
                     \'coc-tsserver',
+                    \'coc-floaterm',
                     \'coc-vimlsp'
                     \]
 
@@ -47,6 +49,7 @@ call plug#begin()
         nnoremap <leader>lc :<c-u>CocList commands<cr>
         nnoremap <leader>lm :<c-u>CocList maps<cr>
         nnoremap <leader>ld :<c-u>CocList diagnostics<cr>
+        nnoremap <leader>lt :<c-u>CocList floaterm<cr>
 
         "rename
         nmap <leader>rn <Plug>(coc-rename)
@@ -82,8 +85,25 @@ call plug#begin()
         nnoremap <c-e> :<c-u>CocCommand explorer --quit-on-open<cr>
     " }}}
 
+    " floaterm: 🌟 Use nvim/vim's builtin terminal in the floating/popup window {{{
+        Plug 'voldikss/vim-floaterm'
+
+        " autoclose floaterm when job exits normally
+        let g:floaterm_autoclose = 1
+
+        " command to open lazygit
+        command! Lazygit FloatermNew lazygit
+
+        " command to open python shell, :FloatermSend to send selected lines to interactive shell
+        command! Pyshell FloatermNew python
+
+        " open new floaterm
+        nnoremap <silent> <leader>tn :<c-u>FloatermNew<cr>
+    " }}}
+
     " vista: 🌵 Viewer & Finder for LSP symbols and tags {{{
         Plug 'liuchengxu/vista.vim'
+
         " fzf is needed to search in vista
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
@@ -94,7 +114,7 @@ call plug#begin()
         " / to fzf in vista window
         autocmd FileType vista,vista_kind nnoremap <buffer> <silent> / :<c-u>call vista#finder#fzf#Run()<cr>
 
-        " autoclose when cista left alone
+        " autoclose when vista left alone
         autocmd bufenter * if (winnr("$") == 1 && &filetype =~# 'vista') | q | endif
 
         " ,o to toggle display outline

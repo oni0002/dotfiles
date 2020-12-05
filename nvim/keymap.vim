@@ -8,6 +8,10 @@
 let mapleader = ','
 let maplocalleader = '\'
 
+" exit insert
+inoremap jk <esc>
+tnoremap JK <c-\><c-n>
+
 " save
 nnoremap <silent> <space>w :<c-u>w!<cr>
 nnoremap <silent> <space>q :<c-u>q<cr>
@@ -67,7 +71,3 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
 noremap mj zb
 noremap mk zt
 noremap mm zz
-
-" exit insert
-inoremap jk <esc>
-tnoremap jk <c-\><c-n>
