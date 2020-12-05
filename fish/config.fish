@@ -40,15 +40,17 @@ abbr -a pacrm sudo pacman -Rs  # uninstall(remove)
 abbr -a paccle sudo pacman -Scc  # clean
 ## git
 abbr -a g git
-abbr -a gadd git add -A
+abbr -a gadd git add -A  # stage all changed file
+abbr -a gbra git branch
 abbr -a gcom git commit -m
-abbr -a greb git rebase
+abbr -a ggre git grep
+abbr -a greb git rebase -i HEAD~  # summerize multi commits, need to push -f
 abbr -a gsta git status
-abbr -a gpus git push
-abbr -a glog git log --oneline
-abbr -a gref git reflog
-abbr -a gfet git fetch
-abbr -a gres git reset
+abbr -a gche git sheckout  # change branch or restore a file
+abbr -a glog git log --graph
+abbr -a gref git reflog  # operation log
+abbr -a gfet git fetch  # fetch remote head
+abbr -a gres git reset  # soft: cancel commit, mixed: in addition add, hard: in addition edit
 abbr -a gpul git pull
 abbr -a gls git ls-files
 

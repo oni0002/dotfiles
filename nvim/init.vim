@@ -18,6 +18,7 @@ source ~/.config/nvim/plugins.vim
     set confirm  " confirm before close unsaved file
     set updatetime=300  " default is 4000ms, too slow
     set shortmess+=c  " do not pass messages to |ins-completion-menu|
+    set lazyredraw  " improve draw performance when navigating through large result
 
     " searching
     set ignorecase  " case insensitive search
@@ -38,6 +39,7 @@ source ~/.config/nvim/plugins.vim
     set hidden  " current buffer go to background instead of close
 
     set concealcursor=nc
+    let g:tex_conceal=''
 
     " tab settings
     set tabstop=4  " a tab is 4 spaces

@@ -1,13 +1,19 @@
+" easy mapping rule
+" <space>: general func
+" <leader>: global plugin prefix
+" <localleader>: language specific prefix
+"
+
 " leader key: ,
 let mapleader = ','
-let maplocalleader = '<'
+let maplocalleader = '\'
 
 " save
-nnoremap <leader>w :w!<cr>
-nnoremap <leader>q :q<cr>
+nnoremap <silent> <space>w :<c-u>w!<cr>
+nnoremap <silent> <space>q :<c-u>q<cr>
 
 " clear highlight
-noremap <leader><leader> :noh<cr>
+noremap <space><space> :<c-u>nohlsearch<cr>
 
 " make window
 nnoremap <c-w>t :tabnew<cr>
@@ -38,7 +44,11 @@ noremap k gk
 " <cr> on normal mode to insert blank line below
 nnoremap <cr> o<esc>
 
-" move in insert/command mode
+" move to sol/eol in insert mode
+inoremap <c-a> <home>
+inoremap <c-e> <end>
+
+" hl in insert/command mode
 inoremap <c-h> <left>
 inoremap <c-l> <right>
 cnoremap <c-h> <left>
@@ -57,10 +67,6 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
 noremap mj zb
 noremap mk zt
 noremap mm zz
-
-" replace
-nnoremap <leader>ra :%s///g<left><left><left>
-nnoremap <leader>rc :%s///gc<left><left><left><left>
 
 " exit insert
 inoremap jk <esc>
