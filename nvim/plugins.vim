@@ -44,6 +44,7 @@ call plug#begin()
 
         " coc-list
         nnoremap <leader>lf :<c-u>CocList files<cr>
+        nnoremap <leader>lc :<c-u>CocList commands<cr>
         nnoremap <leader>lm :<c-u>CocList maps<cr>
         nnoremap <leader>ld :<c-u>CocList diagnostics<cr>
 

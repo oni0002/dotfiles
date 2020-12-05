@@ -15,13 +15,10 @@ abbr -a brsear brew search  # search
 abbr -a brins brew install  # install
 abbr -a brrm brew uninstall  # uninstall(remove)
 abbr -a brcle brew cleanup  # clean
-abbr -a brl brew list  # list
+abbr -a brls brew list  # list
 ## brew cask
-# abbr -a brc brew cask
-# abbr -a brcupg brew cask upgrade  # upgrade
-# abbr -a brcins brew cask install  # install 
-# abbr -a brcrm brew cask uninstall  #uninstall
 abbr -a brcl brew list --cask  # list
+
 ## apt
 abbr -a apupd sudo apt update  # update
 abbr -a apupg sudo apt upgrade  # upgrade
@@ -30,7 +27,8 @@ abbr -a apins sudo apt install  # install
 abbr -a aprm sudo apt remove --purge  # uninstall(remove)
 abbr -a apauto sudo apt autoremove
 abbr -a apcle sudo apt clean  # clean
-abbr -a apl sudo dpkg -l  # list
+abbr -a apls sudo dpkg -l  # list
+
 ## pacman
 abbr -a pac pacman
 abbr -a pacup sudo pacman -Syyu  # update and upgrade
@@ -38,6 +36,7 @@ abbr -a pacsear sudo pacman -Ss  # search
 abbr -a pacins sudo pacman -S  # install
 abbr -a pacrm sudo pacman -Rs  # uninstall(remove)
 abbr -a paccle sudo pacman -Scc  # clean
+
 ## git
 abbr -a g git
 abbr -a gadd git add -A  # stage all changed file
@@ -53,6 +52,12 @@ abbr -a gfet git fetch  # fetch remote head
 abbr -a gres git reset  # soft: cancel commit, mixed: in addition add, hard: in addition edit
 abbr -a gpul git pull
 abbr -a gls git ls-files
+
+## fisher
+abbr -a fiupd fisher update
+abbr -a fiins fisher install
+abbr -a firm fisher remove
+abbr -a fils fisher ls
 
 # rbenv
 rbenv init - | source
