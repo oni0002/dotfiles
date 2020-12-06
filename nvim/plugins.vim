@@ -1,4 +1,5 @@
 " Install vim-plug if not installed
+"
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -46,7 +47,8 @@ call plug#begin()
 
         " coc-list
         nnoremap <leader>lf :<c-u>CocList files<cr>
-        nnoremap <leader>lc :<c-u>CocList commands<cr>
+        nnoremap <leader>lb :<c-u>CocList buffers<cr>
+        nnoremap <leader>lc :<c-u>CocList vimcommands<cr>
         nnoremap <leader>lm :<c-u>CocList maps<cr>
         nnoremap <leader>ld :<c-u>CocList diagnostics<cr>
         nnoremap <leader>lt :<c-u>CocList floaterm<cr>
@@ -90,10 +92,11 @@ call plug#begin()
 
         " autoclose floaterm when job exits normally
         let g:floaterm_autoclose = 1
+        " open command for opening a file from floaterm 
+        let g:floaterm_open_command = 'vsplit'
 
         " command to open lazygit
         command! Lazygit FloatermNew lazygit
-
         " command to open python shell, :FloatermSend to send selected lines to interactive shell
         command! Pyshell FloatermNew python
 
@@ -147,8 +150,8 @@ call plug#begin()
         Plug 'tyru/caw.vim'
 
         " toggle comment current line or selected line
-        nnoremap <leader>/ <Plug>(caw:hatpos:toggle)
-        vnoremap <leader>/ <Plug>(caw:hatpos:toggle)
+        nmap <leader>/ <Plug>(caw:hatpos:toggle)
+        vmap <leader>/ <Plug>(caw:hatpos:toggle)
     " }}}
 
     " easymotion: Vim motions on speed! {{{
@@ -173,14 +176,16 @@ call plug#begin()
 
 " Colorscheme/Appearance {{{
     " colorscheme {{{
-        Plug 'ayu-theme/ayu-vim'
+        " Plug 'ayu-theme/ayu-vim'
+        " Plug 'srcery-colors/srcery-vim'
+        Plug 'ajmwagar/vim-deus'
     " }}}
 
     " lightline: A light and configurable statusline/tabline plugin for Vim {{{
         Plug 'itchyny/lightline.vim'
 
         let g:lightline = {
-            \ 'colorscheme': 'ayu',
+            \ 'colorscheme': 'deus',
             \ 'active': {
                 \ 'left': [ [ 'mode', 'paste' ],
                     \ [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
@@ -250,3 +255,12 @@ call plug#begin()
 " }}}
 
 call plug#end()
+
+" colorscheme settings after loading plugins {{{
+    set t_Co=256  " tell vim that the terminal supports 256 colors
+    set termguicolors
+    colorscheme deus
+    " colorscheme srcery
+    " colorscheme ayu
+    " let ayucolor="dark"
+" }}}

@@ -53,10 +53,4 @@ source ~/.config/nvim/plugins.vim
     " invisible character
     set list  " show invisible chaeacter
     set listchars=tab:>-,trail:⋅,extends:>,precedes:<
-
-    " colorscheme
-    set t_Co=256  " tell vim that the terminal supports 256 colors
-    set termguicolors
-    colorscheme ayu
-    let ayucolor="dark"
 " }}}

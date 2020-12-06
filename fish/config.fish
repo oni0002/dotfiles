@@ -1,9 +1,6 @@
 # disable fzf legacy keybinding which conflict with fish's command key
 set -U FZF_LEGACY_KEYBINDINGS 0
 
-# fish git prompt
-set __fish_git_prompt_showdirtystate 1
-
 # alias
 alias vim nvim
 alias brew "PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin command brew"
