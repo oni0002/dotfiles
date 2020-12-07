@@ -4,7 +4,6 @@
         "python",
         "json",
         "markdown",
-        "javascript"
     ],
     "python.jediEnabled": false,
     "python.linting.pylintEnabled": false,
@@ -63,7 +62,6 @@
         "f": "search",
         "F": "searchRecursive"
     },
-    // "html.autoClosingTags": true,
     "markdownlint.config": {
         "MD007": {
             "indent": 4

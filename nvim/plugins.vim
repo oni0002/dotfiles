@@ -23,15 +23,15 @@ call plug#begin()
                     \'coc-markdownlint',
                     \'coc-highlight',
                     \'coc-explorer',
-                    \'coc-html',
-                    \'coc-css',
-                    \'coc-tsserver',
                     \'coc-floaterm',
-                    \'coc-vimlsp'
                     \]
 
+        " coc-highlight
         " Highlight the symbol and its references when holding the cursor.
-        autocmd CursorHold * silent call CocActionAsync('highlight')
+        augroup coc_hl
+            autocmd!
+            autocmd CursorHold * silent call CocActionAsync('highlight')
+        augroup END
 
         " goto code navigation
         nmap <silent> gd <Plug>(coc-definition)
@@ -45,7 +45,7 @@ call plug#begin()
         nmap <silent> [g <Plug>(coc-diagnostic-prev)
         nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-        " coc-list
+        " coc-lists
         nnoremap <leader>lf :<c-u>CocList files<cr>
         nnoremap <leader>lb :<c-u>CocList buffers<cr>
         nnoremap <leader>lc :<c-u>CocList vimcommands<cr>
@@ -64,7 +64,6 @@ call plug#begin()
         nmap <leader>ac  <Plug>(coc-codeaction)
         " Apply AutoFix to problem on the current line.
         nmap <leader>qf  <Plug>(coc-fix-current)
-
 
         " tab completion
         inoremap <silent><expr> <TAB>
@@ -107,15 +106,7 @@ call plug#begin()
     " vista: 🌵 Viewer & Finder for LSP symbols and tags {{{
         Plug 'liuchengxu/vista.vim'
 
-        " fzf is needed to search in vista
-        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-        Plug 'junegunn/fzf.vim'
-
-
         let g:vista_default_executive = 'coc'
-
-        " / to fzf in vista window
-        autocmd FileType vista,vista_kind nnoremap <buffer> <silent> / :<c-u>call vista#finder#fzf#Run()<cr>
 
         " autoclose when vista left alone
         autocmd bufenter * if (winnr("$") == 1 && &filetype =~# 'vista') | q | endif
@@ -175,17 +166,15 @@ call plug#begin()
 
 
 " Colorscheme/Appearance {{{
-    " colorscheme {{{
-        " Plug 'ayu-theme/ayu-vim'
-        " Plug 'srcery-colors/srcery-vim'
-        Plug 'ajmwagar/vim-deus'
-    " }}}
+    " colorscheme
+    " Plug 'srcery-colors/srcery-vim'
+    " Plug 'ghifarit53/tokyonight-vim'
+    Plug 'gkapfham/vim-vitamin-onec'
 
     " lightline: A light and configurable statusline/tabline plugin for Vim {{{
         Plug 'itchyny/lightline.vim'
 
         let g:lightline = {
-            \ 'colorscheme': 'deus',
             \ 'active': {
                 \ 'left': [ [ 'mode', 'paste' ],
                     \ [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
@@ -194,6 +183,22 @@ call plug#begin()
                 \ 'cocstatus': 'coc#status'
             \ }
         \ }
+
+        " short mode name
+        let g:lightline.mode_map = {
+                \ 'n' : 'N',
+                \ 'i' : 'I',
+                \ 'R' : 'R',
+                \ 'v' : 'V',
+                \ 'V' : 'VL',
+                \ "\<C-v>": 'VB',
+                \ 'c' : 'C',
+                \ 's' : 'S',
+                \ 'S' : 'SL',
+                \ "\<C-s>": 'SB',
+                \ 't': 'T',
+        \ }
+        let g:lightline.subseparator = { 'left': '', 'right': '' }
     " }}}
 
     " startify:🔗 The fancy start screen for Vim. {{{
@@ -250,17 +255,24 @@ call plug#begin()
     " Rubocop {{{
         Plug 'ngmy/vim-rubocop'
 
-        autocmd BufWritePost *.rb :RuboCop -A
+        augroup rubocop_fix
+            autocmd!
+            autocmd BufWritePost *.rb :RuboCop -A
+        augroup END
     " }}}
 " }}}
 
 call plug#end()
 
 " colorscheme settings after loading plugins {{{
-    set t_Co=256  " tell vim that the terminal supports 256 colors
-    set termguicolors
-    colorscheme deus
-    " colorscheme srcery
-    " colorscheme ayu
-    " let ayucolor="dark"
+    if (has("termguicolors"))
+        set termguicolors
+    endif
+    syntax enable
+
+    " colorscheme specific config
+    " let g:miramare_enable_italic = 1
+
+    colorscheme vitaminonec
+    let g:lightline.colorscheme = 'vitaminonec'
 " }}}
