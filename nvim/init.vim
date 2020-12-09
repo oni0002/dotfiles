@@ -1,6 +1,9 @@
-" python provider
+" vim:fileencoding=utf-8:ft=vim:foldmethod=marker
+
+" python provider {{{
 let g:python3_host_prog = '~/.venvs/nvimenv3/bin/python'
 " let g:python_host_prog = expand('~/pynvim2/bin/python')
+" }}}
 
 " keymap
 source ~/.config/nvim/keymap.vim
@@ -23,13 +26,6 @@ set lazyredraw  " improve draw performance when navigating through large result
 " searching
 set ignorecase  " case insensitive search
 set smartcase  " case sensitive if there is capital letter
-
-" lang specific
-" fold with marker in vimrc
-augroup foldmethod
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-augroup END
 
 filetype plugin indent on
 " }}}
