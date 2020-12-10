@@ -8,16 +8,34 @@
 let mapleader = ','
 let maplocalleader = '\'
 
-" exit insert
-inoremap jk <esc>
-tnoremap JK <c-\><c-n>
-
 " save
 nnoremap <silent> <space>w :<c-u>w!<cr>
 nnoremap <silent> <space>q :<c-u>q<cr>
 
 " clear highlight
 noremap <space><space> :<c-u>nohlsearch<cr>
+
+" move cursor
+noremap j gj
+noremap k gk
+
+" fast move
+noremap H ^
+noremap J }
+noremap K {
+noremap L $
+
+" fold
+noremap <space>a za
+noremap <space>A zA
+
+" scroll
+noremap mj zb
+noremap mk zt
+noremap mm zz
+
+" <cr> on normal mode to insert blank line below
+nnoremap <cr> o<esc>
 
 " make window
 nnoremap <c-w>t :tabnew<cr>
@@ -41,12 +59,9 @@ nnoremap tc :tabc<cr>
 nnoremap tl :tabn<cr>
 nnoremap th :tabN<cr>
 
-" move cursor
-noremap j gj
-noremap k gk
-
-" <cr> on normal mode to insert blank line below
-nnoremap <cr> o<esc>
+" exit insert
+inoremap jk <esc>
+tnoremap JK <c-\><c-n>
 
 " move to sol/eol in insert mode
 inoremap <c-a> <home>
@@ -58,16 +73,6 @@ inoremap <c-l> <right>
 cnoremap <c-h> <left>
 cnoremap <c-l> <right>
 
-" fast move
-noremap H ^
-noremap J }
-noremap K {
-noremap L $
-
+" move on popup window
 inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
-
-" scroll
-noremap mj zb
-noremap mk zt
-noremap mm zz
