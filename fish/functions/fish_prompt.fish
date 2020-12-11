@@ -16,13 +16,11 @@ function fish_prompt
     set -l brblack (set_color brblack)
     set -l normal (set_color normal)
 
-    set -l suffix "~(=^._.^)?"
-
     if test $last_status -ne 0
-        set suffix "~(=^-_-^)!?"
+        set suffix "z(=^0.0^)!?"
         set sfx_color $red
     else
-        set suffix "@(=^._.^)?"
+        set suffix "@(=^-.-^).oO"
         set sfx_color $yellow
     end
 
