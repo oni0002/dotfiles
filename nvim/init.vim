@@ -6,7 +6,7 @@ if exists("$VIRTUAL_ENV")
 else
     let g:python3_host_prog = $HOME . '/.venvs/nvim3/bin/python'
 endif
-let g:python_host_prog = $HOME . '/.venvs/nvim2/bin/python'
+let g:loaded_python_provider = 0
 " }}}
 
 " keymap
