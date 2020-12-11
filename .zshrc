@@ -1,3 +1,6 @@
+# fish
+exec fish
+
 ### Added by Zinit's installer
 source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
@@ -59,16 +62,4 @@ alias mkdir="mkdir -p"
 
 # brew
 export PATH="/usr/local/sbin:$PATH"
-# nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-
-export PATH=$HOME/.rbenv/bin:$PATH
-eval "$(rbenv init -)"
-
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-# fish
-exec fish
+# poetry

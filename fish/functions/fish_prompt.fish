@@ -31,7 +31,7 @@ function fish_prompt
     end
 
     if test $VIRTUAL_ENV
-        set venv (basename $VIRTUAL_ENV)
+        set venv '('(basename $VIRTUAL_ENV)')'
     end
 
     # line1

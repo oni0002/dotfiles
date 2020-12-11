@@ -69,5 +69,5 @@ abbr -a lg lazygit
 # }}}
 
 # other
-## rbenv
-rbenv init - | source
+## asdf
+# source ~/.asdf/asdf.fish

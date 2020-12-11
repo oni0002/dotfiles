@@ -1,8 +1,12 @@
 " vim:fileencoding=utf-8:ft=vim:foldmethod=marker
 
 " python provider {{{
-let g:python3_host_prog = '~/.venvs/nvimenv3/bin/python'
-" let g:python_host_prog = expand('~/pynvim2/bin/python')
+if exists("$VIRTUAL_ENV")
+    let g:python3_host_prog = $VIRTUAL_ENV . '/bin/python'
+else
+    let g:python3_host_prog = $HOME . '/.venvs/nvim3/bin/python'
+endif
+let g:python_host_prog = $HOME . '/.venvs/nvim2/bin/python'
 " }}}
 
 " keymap
