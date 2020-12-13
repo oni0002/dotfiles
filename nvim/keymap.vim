@@ -76,5 +76,6 @@ cnoremap <c-h> <left>
 cnoremap <c-l> <right>
 
 " move on popup window
-inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
+" inoremap <expr> <c-j> pumvisible() ? "\<c-N>" : "\<c-j>"
+" inoremap <expr> <c-k> pumvisible() ? "\<c-P>" : "\<c-k>"

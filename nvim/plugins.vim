@@ -37,10 +37,7 @@ let g:coc_global_extensions = [
 
 " coc-highlight
 " Highlight the symbol and its references when holding the cursor.
-augroup coc_hl
-    autocmd!
-    autocmd CursorHold * silent call CocActionAsync('highlight')
-augroup END
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " goto code navigation
 nmap <silent> gd <Plug>(coc-definition)
@@ -81,21 +78,26 @@ xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
 
 " tab completion
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
+" inoremap <silent><expr> <TAB>
+"      \ pumvisible() ? "\<C-n>" :
+"      \ <SID>check_back_space() ? "\<TAB>" :
+"      \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" 
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+ 
 " Make <cr> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-            \: "\<C-g>u\<cr>\<c-r>=coc#on_enter()\<cr>"
+" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+"            \: "\<C-g>u\<cr>\<c-r>=coc#on_enter()\<cr>"
+
+" jk to select completion entry and <cr> to trigger the completion
+inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<cr>"
+inoremap <expr> <c-j> pumvisible() ? "\<c-n>" : "\<c-j>"
+inoremap <expr> <c-k> pumvisible() ? "\<c-p>" : "\<c-k>"
 
 " coc-explorer
 nnoremap <c-e> :<c-u>CocCommand explorer --quit-on-open<cr>
@@ -255,6 +257,11 @@ let g:startify_bookmarks = [
 " }}}
 
 " Language specific {{{
+
+" semshi: 🌈 Semantic Highlighting for Python in Neovim {{{
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+" }}}
+
 " simpylFold: No-BS Python code folding for Vim {{{
 Plug 'tmhedberg/SimpylFold'
 " }}}
