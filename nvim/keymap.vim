@@ -5,15 +5,17 @@
 "
 
 " leader key: ,
-let mapleader = ','
+let mapleader = "\<space>"
 let maplocalleader = '\'
 
+nnoremap ; :
+
 " save
-nnoremap <silent> <space>w :<c-u>w!<cr>
-nnoremap <silent> <space>q :<c-u>q<cr>
+nmap <leader>w :<c-u>w<cr>
+nmap <leader>q :<c-u>q<cr>
 
 " clear highlight
-noremap <space><space> :<c-u>nohlsearch<cr>
+noremap <leader><leader><leader> :<c-u>nohlsearch<cr>
 
 " move cursor
 noremap j gj
@@ -26,8 +28,8 @@ noremap K {
 noremap L $
 
 " fold
-noremap <space>a za
-noremap <space>A zA
+noremap <leader>a za
+noremap <leader>A zA
 
 " scroll
 noremap mj zb
