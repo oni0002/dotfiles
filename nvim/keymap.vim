@@ -38,6 +38,7 @@ noremap mm zz
 
 " <cr> on normal mode to insert blank line below
 nnoremap <cr> o<esc>
+nnoremap <s-cr> O<esc>
 
 " make window
 nnoremap <c-w>t :tabnew<cr>

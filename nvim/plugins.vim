@@ -1,11 +1,13 @@
 " vim:fileencoding=utf-8:ft=vim:foldmethod=marker
 
 " Install vim-plug if not installed {{{
+
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
 " }}}
 
 " plugins list {{{
@@ -18,6 +20,7 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " fuzzy finder
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'liuchengxu/vim-clap'
 Plug 'vn-ki/coc-clap'
 
@@ -32,6 +35,7 @@ let g:coc_global_extensions = [
             \'coc-highlight',
             \'coc-explorer',
             \'coc-floaterm',
+            \'coc-fzf-preview',
             \'coc-git',
             \]
 
@@ -52,20 +56,25 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " coc-lists
-" nnoremap <leader>lf :<c-u>CocList files<cr>
-" nnoremap <leader>lb :<c-u>CocList buffers<cr>
-" nnoremap <leader>lc :<c-u>CocList vimcommands<cr>
-" nnoremap <leader>lm :<c-u>CocList maps<cr>
-" nnoremap <leader>ld :<c-u>CocList diagnostics<cr>
-nnoremap <leader><leader>f :<c-u>Clap files<cr>
-nnoremap <leader><leader>b :<c-u>Clap buffers<cr>
-nnoremap <leader><leader>c :<c-u>Clap command<cr>
-nnoremap <leader><leader>l :<c-u>Clap lines<cr>
-nnoremap <leader><leader>m :<c-u>Clap maps<cr>
-nnoremap <leader><leader>o :<c-u>Clap tags<cr>
-nnoremap <leader><leader>d :<c-u>Clap coc_diagnostics<cr>
-nnoremap <leader><leader>a :<c-u>Clap coc_actions<cr>
-nnoremap <leader><leader>t :<c-u>Clap floaterm<cr>
+nmap <leader><leader> [clap]
+xmap <leader><leader> [clap]
+" nnoremap <leader><leader>f :<c-u>CocList files<cr>
+" nnoremap <leader><leader>b :<c-u>CocList buffers<cr>
+" nnoremap <leader><leader>c :<c-u>CocList vimcommands<cr>
+" nnoremap <leader><leader>l :<c-u>CocList lines<cr>
+" nnoremap <leader><leader>w :<c-u>CocList words<cr>
+" nnoremap <leader><leader>m :<c-u>CocList maps<cr>
+" nnoremap <leader><leader>d :<c-u>CocList diagnostics<cr>
+" nnoremap <leader><leader>t :<c-u>CocList floaterm<cr>
+
+nnoremap <silent> [clap]f :<c-u>Clap files<cr>
+nnoremap <silent> [clap]b :<c-u>Clap buffers<cr>
+nnoremap <silent> [clap]c :<c-u>Clap command<cr>
+nnoremap <silent> [clap]l :<c-u>Clap blines<cr>
+nnoremap <silent> [clap]m :<c-u>Clap maps<cr>
+nnoremap <silent> [clap]o :<c-u>Clap tags<cr>
+nnoremap <silent> [clap]d :<c-u>Clap coc_diagnostics<cr>
+nnoremap <silent> [clap]t :<c-u>Clap floaterm<cr>
 
 " rename
 nmap <leader>rn <Plug>(coc-rename)
@@ -119,7 +128,8 @@ command! Lazygit FloatermNew lazygit
 command! Pyshell FloatermNew python
 
 " open new floaterm
-nnoremap <silent> <leader>tn :<c-u>FloatermNew<cr>
+nnoremap <silent> <leader>nt :<c-u>FloatermNew<cr>
+nnoremap <silent> <leader>t :<c-u>FloatermToggle<cr>
 
 " }}}
 
