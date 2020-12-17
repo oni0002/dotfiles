@@ -14,22 +14,7 @@
     "python.formatting.provider": "black",
     "explorer.keyMappings.global": {
         "i": false, // cancel default mapkey
-        "*": "toggleSelection",
         "<tab>": "actionMenu",
-        "h": "collapse",
-        "l": [
-            "expandable?",
-            "expand",
-            "open"
-        ],
-        "J": [
-            "toggleSelection",
-            "normal:j"
-        ],
-        "K": [
-            "toggleSelection",
-            "normal:k"
-        ],
         "<cr>": [
             "expandable?",
             [
@@ -43,11 +28,6 @@
         "s": "open:split",
         "v": "open:vsplit",
         "t": "open:tab",
-        "y": "copyFilepath",
-        "Y": "copyFilename",
-        "c": "copyFile",
-        "x": "cutFile",
-        "p": "pasteFile",
         "d": "delete",
         "a": "addFile",
         "A": "addDirectory",
@@ -57,8 +37,6 @@
         "?": "help",
         "q": "quit",
         "<esc>": "esc",
-        "X": "systemExecute",
-        "gd": "listDrive",
         "f": "search",
         "F": "searchRecursive"
     },
