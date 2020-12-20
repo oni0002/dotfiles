@@ -17,7 +17,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 " plugins list {{{
 call plug#begin()
 
-" Appearance {{{
+" General {{{
 " coc {{{
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 

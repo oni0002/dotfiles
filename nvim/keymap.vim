@@ -9,7 +9,6 @@ let maplocalleader = ','
 
 " exit insert
 inoremap jk <esc>
-inoremap kj <esc>
 tnoremap JK <c-\><c-n>
 
 nnoremap ; :

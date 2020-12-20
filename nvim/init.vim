@@ -3,8 +3,6 @@
 " python provider {{{
 if exists("$VIRTUAL_ENV")
     let g:python3_host_prog = $VIRTUAL_ENV . '/bin/python'
-else
-    let g:python3_host_prog = $HOME . '/.venvs/nvim3/bin/python'
 endif
 let g:loaded_python_provider = 0
 " }}}
