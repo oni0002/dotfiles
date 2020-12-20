@@ -1,22 +1,17 @@
 # dotfiles
 
-このリポジトリはドットファイルのみ管理しているので，必要なツールはOSごとに適宜インストールする
+ドットファイルス
 
 ## brew(mac)
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 brew update
 ```
-
-## zsh
-```
+## zsh(必須ではない)
 macにははじめから入ってる
+linuxでは.bashrcに`exec fish`書く
 
-sudo apt install -y zsh
-chsh -s /usr/bin/zsh
-```
-
-### zplugin
+### zplugin(zsh使うなら)
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
 ```
@@ -26,29 +21,23 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc
 brew install fish
 
 sudo apt install fish
-chshせずに.zshrcにexec fishしたほうがいいってarchwikiに書いてある
 ```
 
 ### fisher
 ```
-fish curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish     
+fish curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 
 brew install fzf
-fish fisher add jethrokuan/fzf
-
-fish fisher add jethrokuan/z
-
-fish fisher add rafaelrinaldi/pure
+fish fisher install jethrokuan/fzf
+fish fisher install rstacruz/fish-asdf
+fish fisher install justinmayer/virtualfish
 ```
 
 ## python
 ```
-brew install python
-brew install python2
-
 sudo apt install -y python-dev python-pip python3-dev python3-pip
 
-pyenvは必要ない
+バージョン分け必要ならasdf使う
 ```
 
 ## neovim
@@ -60,19 +49,12 @@ sudo apt install -y neovim
 
 ### pynvim
 ```
-venvでHOMEにnvim用環境つくる
-pip2 install --upgrade pynvim
 pip3 install --upgrade pynvim
-pip2がなければpython2のpynvimはなくてもいい
 ```
 
 ### node, npm
 ```
-brew install nodebrew
-要path追記
-nodebrew install-binary stable
-nodebrew use vXX.XX.XX
-
+バージョン分け必要ならasdf
 sudo apt install -y nodejs npm
 
 npm install -g neovim
@@ -80,11 +62,8 @@ npm install -g neovim
 
 ### vim-plug
 ```
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-:PlugInstall
-:UpdateRemotePlugins
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
 
 ## alacritty
@@ -106,5 +85,5 @@ sudo apt install kitty
 ```
 git clone git@github.com:lynd2299/dotfiles.git
 cd dotfiles
-sh symlink.sh
+sh link.sh
 ```
