@@ -1,9 +1,8 @@
 " easy mapping rule
-" <space>: general func
 " <leader>: global plugin prefix
 " <localleader>: language specific prefix
 
-" leader key: ,
+" leader key: <space>
 let mapleader = "\<space>"
 let maplocalleader = ','
 
@@ -13,12 +12,12 @@ tnoremap JK <c-\><c-n>
 
 nnoremap ; :
 
-" save
+" write and quit
 nmap <leader>w :<c-u>w<cr>
 nmap <leader>q :<c-u>q<cr>
 
 " clear highlight
-noremap <leader><leader><leader> :<c-u>nohlsearch<cr>
+noremap <esc><esc> :<c-u>nohlsearch<cr>
 
 " move cursor
 noremap j gj
@@ -34,15 +33,10 @@ noremap L $
 noremap <leader>a za
 noremap <leader>A zA
 
-" scroll
-noremap mj zb
-noremap mk zt
-noremap mm zz
-
 " <cr> on normal mode to insert blank line below
 nnoremap <cr> o<esc>
 
-" make window
+" create window
 nnoremap <c-w>t :tabnew<cr>
 nnoremap <c-w>s :split<cr>
 nnoremap <c-w>v :vsplit<cr>
@@ -60,7 +54,6 @@ nnoremap + <c-w><c->>
 nnoremap _ <c-w><c-<>
 
 " tab control
-nnoremap tc :tabc<cr>
 nnoremap tl :tabn<cr>
 nnoremap th :tabN<cr>
 

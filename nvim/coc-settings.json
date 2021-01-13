@@ -5,6 +5,8 @@
         "json",
         "markdown",
     ],
+    "diagnostic.errorSign": "E",
+    "diagnostic.warningSign": "W",
     "python.jediEnabled": false,
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
