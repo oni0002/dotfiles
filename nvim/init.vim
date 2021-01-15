@@ -8,9 +8,9 @@ let g:loaded_python_provider = 0
 " }}}
 
 " keymap
-source ~/.config/nvim/keymap.vim
+source ~/.config/nvim/maps.vim
 " plugins
-source ~/.config/nvim/plugins.vim
+source ~/.config/nvim/plugs.vim
 
 
 " General {{{

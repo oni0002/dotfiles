@@ -79,7 +79,8 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " coc-lists
 nmap <leader><leader> [clap]
 xmap <leader><leader> [clap]
-nnoremap <silent> [clap]f :<c-u>Clap files<cr>
+nnoremap <silent> [clap]f :<c-u>Clap files!<cr>
+" nnoremap <silent> [clap]f :<c-u>Clap filer<cr>
 nnoremap <silent> [clap]b :<c-u>Clap buffers<cr>
 nnoremap <silent> [clap]c :<c-u>Clap command<cr>
 nnoremap <silent> [clap]l :<c-u>Clap lines<cr>
@@ -191,15 +192,19 @@ let g:EasyMotion_smartcase = 1
 
 " jump to anywhere with 2 char
 nmap s <Plug>(easymotion-overwin-f2)
-" jump to word in current line
-nmap f <Plug>(easymotion-bd-wl)
 " search motion, n/N to next/prev match
 nmap / <Plug>(easymotion-sn)
-" line motion
-nmap <leader>L <Plug>(easymotion-overwin-line)
 " keep cursor column when JK motion
 let g:EasyMotion_startofline = 0
 " }}}
+
+
+Plug 'rhysd/clever-f.vim'
+
+" enable ignorecase
+let g:clever_f_ignore_case = 1
+" char for all symbol
+let g:clever_f_chars_match_any_sign = ';'
 " }}}
 
 
@@ -278,7 +283,7 @@ let g:startify_commands = [
 " bookmarks
 let g:startify_bookmarks = [
            \{ 'c': '~/dotfiles/nvim/init.vim' },
-           \{ 'p': '~/dotfiles/nvim/plugins.vim' },
+           \{ 'p': '~/dotfiles/nvim/plugs.vim' },
            \{ 'g': '~/.gitconfig' },
            \{ 'f': '~/dotfiles/fish/config.fish' }
            \]
@@ -288,30 +293,14 @@ let g:startify_bookmarks = [
 
 " Language specific {{{
 " simpylFold: {{{
-" python fold
-Plug 'tmhedberg/SimpylFold'
+Plug 'tmhedberg/SimpylFold', {'for': 'python'}
+
+let g:SimpylFold_fold_docstring = 0
 " }}}
 
 
 " Markdown preview{{{
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-" }}}
-
-
-" Vim org-mode {{{
-Plug 'jceb/vim-orgmode'
-
-let g:org_export_emacs="/usr/local/bin/emacs"
-" }}}
-
-
-" Rubocop {{{
-Plug 'ngmy/vim-rubocop'
-
-augroup rubocop_fix
-    autocmd!
-    autocmd BufWritePost *.rb :RuboCop -A
-augroup END
 " }}}
 " }}}
 

@@ -6,15 +6,16 @@
 let mapleader = "\<space>"
 let maplocalleader = ','
 
-" exit insert
+" exit insert, terminal
 inoremap jk <esc>
-tnoremap JK <c-\><c-n>
+tnoremap <esc> <c-\><c-n>
 
 nnoremap ; :
 
 " write and quit
-nmap <leader>w :<c-u>w<cr>
-nmap <leader>q :<c-u>q<cr>
+nnoremap <leader>w :update<cr>
+nnoremap <leader>q :x<cr>
+nnoremap <leader>Q :qa<cr>
 
 " clear highlight
 noremap <esc><esc> :<c-u>nohlsearch<cr>
@@ -25,8 +26,6 @@ noremap k gk
 
 " fast move
 noremap H ^
-noremap J }
-noremap K {
 noremap L $
 
 " fold
