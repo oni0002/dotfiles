@@ -1,7 +1,3 @@
-" easy mapping rule
-" <leader>: global plugin prefix
-" <localleader>: language specific prefix
-
 " leader key: <space>
 let mapleader = "\<space>"
 let maplocalleader = ','
@@ -32,8 +28,8 @@ noremap L $
 noremap <leader>a za
 noremap <leader>A zA
 
-" <cr> on normal mode to insert blank line below
-nnoremap <cr> o<esc>
+" insert new line below in normal mode
+nnoremap <enter> o<esc>
 
 " create window
 nnoremap <c-w>t :tabnew<cr>
@@ -65,8 +61,3 @@ inoremap <c-h> <left>
 inoremap <c-l> <right>
 cnoremap <c-h> <left>
 cnoremap <c-l> <right>
-
-" move on popup window
-" inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<cr>"
-" inoremap <expr> <c-j> pumvisible() ? "\<c-n>" : "\<c-j>"
-" inoremap <expr> <c-k> pumvisible() ? "\<c-p>" : "\<c-k>"

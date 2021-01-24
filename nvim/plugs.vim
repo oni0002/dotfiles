@@ -1,6 +1,6 @@
 " vim:fileencoding=utf-8:ft=vim:foldmethod=marker
 
-" Automatic Installation {{{
+" vim-plug {{{
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -14,19 +14,40 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 " }}}
 
 
-" plugins list {{{
+" Plugins list {{{
 call plug#begin()
 
-
-" General {{{
-" coc {{{
+" Functional
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" plugins for fuzzy find
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'liuchengxu/vim-clap'
 Plug 'vn-ki/coc-clap'
+Plug 'voldikss/vim-floaterm'
+Plug 'liuchengxu/vista.vim'
+Plug 'kqito/vim-easy-replace'
+Plug 'preservim/nerdcommenter'
+Plug 'easymotion/vim-easymotion'
+Plug 'rhysd/clever-f.vim'
 
+" Appearance
+Plug 'srcery-colors/srcery-vim'
+Plug 'ghifarit53/tokyonight-vim'
+Plug 'gkapfham/vim-vitamin-onec'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'mhinz/vim-startify'
+Plug 'itchyny/lightline.vim'
+
+" Language specific 
+Plug 'tmhedberg/SimpylFold', {'for': 'python'}
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+call plug#end()
+" }}}
+
+
+" Plugin settings {{{
+
+" coc.nvim {{{
 " coc_status error/worning symbols
 let g:coc_status_error_sign = 'E'
 let g:coc_status_warning_sign = 'W'
@@ -99,8 +120,7 @@ nmap <leader>m <Plug>(coc-cursors-word)
 xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
 
-" jk to select completion entry and <cr> to trigger the completion
-inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<cr>"
+" jk to select completion entry
 inoremap <expr> <c-j> pumvisible() ? "\<c-n>" : "\<c-j>"
 inoremap <expr> <c-k> pumvisible() ? "\<c-p>" : "\<c-k>"
 
@@ -123,14 +143,11 @@ nnoremap <silent> <leader>e :<c-u>CocCommand explorer --quit-on-open<cr>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 " }}}
 
-
-" floaterm: {{{
-Plug 'voldikss/vim-floaterm'
-
+" floaterm {{{
 " floaterm width ratio
-let g:floaterm_width = 0.8
+let g:floaterm_width = 0.9
 " floaterm height ratio
-let g:floaterm_height = 0.8
+let g:floaterm_height = 0.9
 " autoclose floaterm when job exits normally
 let g:floaterm_autoclose = 1
 " open command for opening a file from floaterm 
@@ -152,10 +169,7 @@ nnoremap <silent> <F12> :<c-u>FloatermToggle<cr>
 tnoremap <silent> <F12> <c-\><c-n>:<c-u>FloatermToggle<cr>
 " }}}
 
-
 " vista {{{
-Plug 'liuchengxu/vista.vim'
-
 let g:vista_default_executive = 'coc'
 
 " autoclose when vista left alone
@@ -165,26 +179,15 @@ autocmd bufenter * if (winnr("$") == 1 && &filetype =~# 'vista') | q | endif
 nnoremap <silent> <leader>o :<c-u>Vista!!<cr>
 " }}}
 
-
-" vim-easy-replace {{{
-Plug 'kqito/vim-easy-replace'
-" <leader>ra to replace
-" <leader>rc to replace the words under the cursor
+" NERDCommenter {{{
+" Disable default keymap
+let g:NERDCreateDefaultMappings = 0
+" Toggle comment of selected lines
+nmap <leader>c <Plug>NERDCommenterToggle
+vmap <leader>c <Plug>NERDCommenterToggle
 " }}}
-
-
-" caw {{{
-Plug 'tyru/caw.vim'
-
-" toggle comment current line or selected line
-nmap <leader>c <Plug>(caw:hatpos:toggle)
-vmap <leader>c <Plug>(caw:hatpos:toggle)
-" }}}
-
 
 " easymotion {{{
-Plug 'easymotion/vim-easymotion'
-
 " disable easymotion default keymap
 let g:EasyMotion_do_mapping = 0
 " turn on case-insensitive feature
@@ -198,63 +201,51 @@ nmap / <Plug>(easymotion-sn)
 let g:EasyMotion_startofline = 0
 " }}}
 
-
-Plug 'rhysd/clever-f.vim'
-
+" clever-f {{{
 " enable ignorecase
 let g:clever_f_ignore_case = 1
 " char for all symbol
 let g:clever_f_chars_match_any_sign = ';'
 " }}}
 
-
-" Appearance {{{
-" colorscheme {{{
-Plug 'srcery-colors/srcery-vim'
-Plug 'ghifarit53/tokyonight-vim'
-Plug 'gkapfham/vim-vitamin-onec'
+" TreeSitter {{{
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = {"python"},
+    highlight = { enable = true },
+}
+EOF
 " }}}
 
+"lightline {{{
+let g:lightline = {
+           \     'active': {
+           \         'left': [ [ 'mode', 'paste' ],
+           \                   [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+           \     },
+           \     'component_function': {
+           \         'cocstatus': 'coc#status'
+           \     }
+           \ }
 
-" lightline {{{
-" Plug 'itchyny/lightline.vim'
-" 
-" let g:lightline = {
-"    \ 'active': {
-"        \ 'left': [ [ 'mode', 'paste' ],
-"            \ [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-"    \ },
-"    \ 'component_function': {
-"        \ 'cocstatus': 'coc#status'
-"    \ }
-"\ }
-" 
-" " short mode name
-" let g:lightline.mode_map = {
-"        \ 'n' : 'N',
-"        \ 'i' : 'I',
-"        \ 'R' : 'R',
-"        \ 'v' : 'V',
-"        \ 'V' : 'VL',
-"        \ "\<C-v>": 'VB',
-"        \ 'c' : 'C',
-"        \ 's' : 'S',
-"        \ 'S' : 'SL',
-"        \ "\<C-s>": 'SB',
-"        \ 't': 'T',
-"\ }
-" let g:lightline.subseparator = { 'left': '', 'right': '' }
+" short mode name
+let g:lightline.mode_map = {
+      \ 'n' : 'N',
+      \ 'i' : 'I',
+      \ 'R' : 'R',
+      \ 'v' : 'V',
+      \ 'V' : 'VL',
+      \ "\<C-v>": 'VB',
+      \ 'c' : 'C',
+      \ 's' : 'S',
+      \ 'S' : 'SL',
+      \ "\<C-s>": 'SB',
+      \ 't': 'T',
+\ }
+let g:lightline.subseparator = { 'left': '', 'right': '' }
 " }}}
-
-
-" neoline {{{
-Plug 'https://github.com/adelarsq/neoline.vim'
-" }}}
-
 
 " startify: {{{
-Plug 'mhinz/vim-startify'
-
 let g:startify_files_number = 5
 let g:startify_change_to_dir = 0
 let g:startify_relative_path = 1
@@ -288,33 +279,16 @@ let g:startify_bookmarks = [
            \{ 'f': '~/dotfiles/fish/config.fish' }
            \]
 " }}}
+
 " }}}
 
 
-" Language specific {{{
-" simpylFold: {{{
-Plug 'tmhedberg/SimpylFold', {'for': 'python'}
-
-let g:SimpylFold_fold_docstring = 0
-" }}}
-
-
-" Markdown preview{{{
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-" }}}
-" }}}
-
-
-call plug#end()
-" }}}
-
-
-" colorscheme settings after loading plugins {{{
+" Colorscheme settings after loading plugins {{{
 if (has("termguicolors"))
     set termguicolors
 endif
 syntax enable
 
 colorscheme srcery
-" let g:lightline.colorscheme = 'srcery'
+let g:lightline.colorscheme = 'srcery'
 " }}}
