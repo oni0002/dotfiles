@@ -14,7 +14,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 " }}}
 
 
-" # Plugins list {{{
+"# Plugins list {{{
 call plug#begin()
 
 " Functional
@@ -31,15 +31,24 @@ Plug 'liuchengxu/vista.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'rhysd/clever-f.vim'
+Plug 'windwp/nvim-autopairs'
 
 " Appearance
-Plug 'Yggdroot/indentLine'
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'mhinz/vim-startify'
-Plug 'itchyny/lightline.vim'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
+
+Plug 'glepnir/indent-guides.nvim'
+Plug 'lewis6991/gitsigns.nvim'
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'mhinz/vim-startify'
+
 Plug 'kyazdani42/nvim-tree.lua'
+"Plug 'glepnir/galaxyline.nvim'
+"Plug 'akinsho/nvim-bufferline.lua'
+
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
+Plug 'josa42/vim-lightline-coc'
 
 " Colorscheme
 Plug 'srcery-colors/srcery-vim'
@@ -65,7 +74,6 @@ let g:coc_status_warning_sign = 'W'
 " global extensions
 let g:coc_global_extensions = [
             \'coc-snippets',
-            \'coc-pairs',
             \'coc-lists',
             \'coc-json',
             \'coc-python',
@@ -136,6 +144,8 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
+" Applying codeAction to the selected region.
+
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
@@ -147,7 +157,7 @@ command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport
 
 
 " coc-explorer
-nnoremap <silent> <leader>e :<c-u>CocCommand explorer --quit-on-open<cr>
+"nnoremap <silent> <leader>e :<c-u>CocCommand explorer --quit-on-open<cr>
 " Autoclose when coc-explorer left alone
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 " }}}
@@ -155,8 +165,8 @@ autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | end
 " ## Clap {{{
 "let g:clap_layout = {'relative': 'editor'}
 
+"nnoremap [clap] <Nop>
 "nmap <leader><leader> [clap]
-"xmap <leader><leader> [clap]
 "nnoremap <silent> [clap]f :<c-u>Clap filer<cr>
 "nnoremap <silent> [clap]b :<c-u>Clap buffers<cr>
 "nnoremap <silent> [clap]c :<c-u>Clap command<cr>
@@ -179,14 +189,13 @@ require('telescope').setup{
 }
 EOF
 
-nmap <leader><leader> [tele]
-xmap <leader><leader> [tele]
-nnoremap <silent> [tele]f <cmd>Telescope find_files<cr>
-nnoremap <silent> [tele]b :<c-u>Telescope buffers<cr>
-nnoremap <silent> [tele]c :<c-u>Telescope commands<cr>
-nnoremap <silent> [tele]l :<c-u>Telescope current_buffer_fuzzy_find<cr>
-nnoremap <silent> [tele]m :<c-u>Telescope keymaps<cr>
-nnoremap <silent> [tele]o :<c-u>Telescope current_buffer_tags<cr>
+nnoremap <silent> <leader><leader>f <cmd>Telescope find_files<cr>
+nnoremap <silent> <leader><leader>h <cmd>Telescope oldfiles<cr>
+nnoremap <silent> <leader><leader>b <cmd>Telescope buffers<cr>
+nnoremap <silent> <leader><leader>c <cmd>Telescope commands<cr>
+nnoremap <silent> <leader><leader>l <cmd>Telescope current_buffer_fuzzy_find<cr>
+nnoremap <silent> <leader><leader>m <cmd>Telescope keymaps<cr>
+nnoremap <silent> <leader><leader>t <cmd>Telescope treesitter<cr>
 " }}}
 
 " ## Floaterm {{{
@@ -205,14 +214,10 @@ command! Lazygit FloatermNew lazygit
 command! Pyshell FloatermNew python
 
 " open new floaterm
-nnoremap <silent> <F7> :<c-u>FloatermNew<cr>
-tnoremap <silent> <F7> <c-\><c-n>:<c-u>FloatermNew<cr>
-nnoremap <silent> <F8> :<c-u>FloatermPrev<cr>
-tnoremap <silent> <F8> <c-\><c-n>:<c-u>FloatermPrev<cr>
-nnoremap <silent> <F9> :<c-u>FloatermNext<cr>
-tnoremap <silent> <F9> <c-\><c-n>:<c-u>FloatermNext<cr>
-nnoremap <silent> <F12> :<c-u>FloatermToggle<cr>
-tnoremap <silent> <F12> <c-\><c-n>:<c-u>FloatermToggle<cr>
+nnoremap <silent> <leader>t :<c-u>FloatermToggle<cr>
+tnoremap <silent> <c-t> <c-\><c-n>:<c-u>FloatermToggle<cr>
+tnoremap <silent> <c-h> <c-\><c-n>:<c-u>FloatermPrev<cr>
+tnoremap <silent> <c-l> <c-\><c-n>:<c-u>FloatermNext<cr>
 " }}}
 
 " ## Vista {{{
@@ -222,7 +227,7 @@ let g:vista_default_executive = 'coc'
 autocmd bufenter * if (winnr("$") == 1 && &filetype =~# 'vista') | q | endif
 
 " ,o to toggle display outline
-nnoremap <silent> <leader>o :<c-u>Vista!!<cr>
+nnoremap <silent> <leader>v :<c-u>Vista!!<cr>
 " }}}
 
 " ## NERDCommenter {{{
@@ -243,8 +248,6 @@ let g:EasyMotion_smartcase = 1
 
 " jump to anywhere with 2 char
 nmap s <Plug>(easymotion-overwin-f2)
-" search motion, n/N to next/prev match
-nmap / <Plug>(easymotion-sn)
 " keep cursor column when JK motion
 let g:EasyMotion_startofline = 0
 " }}}
@@ -253,54 +256,51 @@ let g:EasyMotion_startofline = 0
 " enable ignorecase
 let g:clever_f_ignore_case = 1
 " char for all symbol
-let g:clever_f_chars_match_any_sign = ';'
+let g:clever_f_chars_match_any_signs = ';'
+" }}}
+
+" ## Autopairs {{{
+lua require('nvim-autopairs').setup()
 " }}}
 
 " ## TreeSitter {{{
-lua << EOF
-require'nvim-treesitter.configs'.setup {
-    ensure_installed = {"python"},
-    highlight = { enable = true },
-}
-EOF
+"lua << EOF
+"require'nvim-treesitter.configs'.setup {
+"    ensure_installed = {},
+"    highlight = { enable = true },
+"}
+"EOF
 " }}}
 
 " ## Gitsigns {{{
-lua << EOF
-require('gitsigns').setup()
-EOF
+lua require('gitsigns').setup()
 " }}}
 
 " ## Lightline {{{
+set showtabline=2
+
+let g:lightline#bufferline#show_number  = 1
+let g:lightline#bufferline#unnamed      = '[No Name]'
+let g:lightline#bufferline#enable_devicons = 1
+
 let g:lightline = {
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+        \ 'left': [ [ 'mode', 'paste' ],
+            \ [ 'readonly', 'filename', 'modified' ],
+            \ [ 'coc_errors', 'coc_warnings', ],
+            \ [ 'coc_status' ] ]
     \ },
-    \ 'component_function': {
-    \   'cocstatus': 'coc#status'
-    \ }
 \ }
 
-" short mode name
-let g:lightline.mode_map = {
-    \ 'n' : 'N',
-    \ 'i' : 'I',
-    \ 'R' : 'R',
-    \ 'v' : 'V',
-    \ 'V' : 'V',
-    \ "\<C-v>": 'V',
-    \ 'c' : 'C',
-    \ 's' : 'S',
-    \ 'S' : 'S',
-    \ "\<C-s>": 'S',
-    \ 't': 'T',
-\ }
+let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
+call lightline#coc#register()
 " }}}
 
 " ## Nvim Tree {{{
-nnoremap <c-n> :NvimTreeToggle<cr>
-nnoremap <leader>r :NvimTreeRefresh<cr>
-nnoremap <leader>n :NvimTreeFindFile<cr>
+nnoremap <leader>e :NvimTreeToggle<cr>
+nnoremap <leader>F :NvimTreeFindFile<cr>
 " }}}
 
 " ## Startify: {{{
@@ -308,45 +308,55 @@ let g:startify_files_number = 5
 let g:startify_change_to_dir = 0
 let g:startify_relative_path = 1
 let g:startify_use_env = 1
-let g:startify_custom_header =
-           \'startify#center([
-           \" ███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓",
-           \" ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒",
-           \"▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░",
-           \"▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██ ",
-           \"▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒",
-           \"░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░",
-           \"░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░    ░ ░░   ▒ ░░  ░      ░",
-           \"   ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░   ",
-           \"         ░    ░  ░    ░ ░        ░   ░         ░   ",
-           \"                                ░                  ",
-           \])'
+let g:startify_custom_header = 'startify#center([
+        \" ███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓",
+        \" ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒",
+        \"▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░",
+        \"▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██ ",
+        \"▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒",
+        \"░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░",
+        \"░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░    ░ ░░   ▒ ░░  ░      ░",
+        \"   ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░   ",
+        \"         ░    ░  ░    ░ ░        ░   ░         ░   ",
+        \"                                ░                  ",
+        \])'
 
 " commands
 let g:startify_commands = [
-           \{ 'pu': [ 'Update Plugins', ':PlugUpdate | PlugUpgrade' ] },
-           \{ 'pc': [ 'Clean Plugins', ':PlugClean' ] },
-           \{ 'cu': [ 'Update CoC Plugins', ':CocUpdate' ] },
-           \]
+        \{ 'pu': [ 'Update Plugins', ':PlugUpdate | PlugUpgrade' ] },
+        \{ 'pc': [ 'Clean Plugins', ':PlugClean' ] },
+        \{ 'cu': [ 'Update CoC Plugins', ':CocUpdate' ] },
+        \]
 
 " bookmarks
 let g:startify_bookmarks = [
-           \{ 'c': '~/dotfiles/nvim/init.vim' },
-           \{ 'p': '~/dotfiles/nvim/plugs.vim' },
-           \{ 'g': '~/.gitconfig' },
-           \{ 'f': '~/dotfiles/fish/config.fish' }
-           \]
+        \{ 'm': '~/dotfiles/nvim/maps.vim' },
+        \{ 'p': '~/dotfiles/nvim/plugs.vim' },
+        \{ 'f': '~/dotfiles/fish/config.fish' }
+        \]
+" }}}
+
+" ## Indent-guides {{{
+lua << EOF
+require('indent_guides').setup({
+    exclude_filetypes = {'help','dashboard','dashpreview','NvimTree','vista','sagahover','startify'}
+})
+EOF
+" }}}
+
+" ## Galaxyline {{{
+"lua require('statusline')
 " }}}
 
 " }}}
 
 
-" # Colorscheme settings after loading plugins {{{
+" # Colorscheme settings {{{
 if (has("termguicolors"))
     set termguicolors
 endif
 syntax enable
 
-colorscheme falcon
-let g:lightline.colorscheme = 'falcon'
+colorscheme moonfly
+let g:lightline.colorscheme = 'moonfly'
 " }}}
