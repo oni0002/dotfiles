@@ -4,15 +4,17 @@ gl.short_line_list = {'NvimTree','vista','dbui'}
 
 -- moonfly color
 local colors = {
-  bg = '#262626',
-  fg = '#c6c6c6',
-  yellow = '#e3c78a',
-  cyan = '#79dac8',
-  green = '#8cc85f',
-  orange = '#de935f',
-  magenta = '#d183e8',
-  blue = '#80a0ff',
-  red = '#ff5454',
+    bg = '#080808',
+    fg = '#c6c6c6',
+    red = '#ff5454',
+    green = '#8cc85f',
+    yellow = '#e3c78a',
+    blue = '#80a0ff',
+    purple = '#d183e8',
+    cyan = '#79dac8',
+    white = '#dadada',
+    lightgray = '#626262',
+    darkgray = '#3a3a3a'
 }
 
 local mode_alias = {
@@ -23,56 +25,47 @@ local mode_alias = {
     V = 'VISUAL',
     c = 'COMMAND',
     R  = 'REPLACE',
-    s  = 'SELECT',
-    [''] = 'SELECT',
-    S  = 'SELECT',
     t  = 'TERM',
-    ['!']  = 'SHELL',
 }
 
 local mode_color = {
-    n = colors.blue,
-    i = colors.green,
-    v=colors.magenta,
-    [''] = colors.magenta,
-    V=colors.magenta,
+    n = colors.green,
+    i = colors.blue,
+    v=colors.red,
+    [''] = colors.red,
+    V=colors.red,
     c = colors.red,
-    R = colors.red,
-    s = colors.orange,
-    [''] = colors.orange,
-    S=colors.orange,
-    t = colors.cyan,
-    ['!']  = colors.cyan,
+    R = colors.yellow,
+    t = colors.blue,
 }
 
+--local function lsp_status(status)
+--    shorter_stat = ''
+--    for match in string.gmatch(status, "[^%s]+")  do
+--        err_warn = string.find(match, "^[WE]%d+", 0)
+--        if not err_warn then
+--            shorter_stat = shorter_stat .. ' ' .. match
+--        end
+--    end
+--    return shorter_stat
+--end
 
-local function lsp_status(status)
-    shorter_stat = ''
-    for match in string.gmatch(status, "[^%s]+")  do
-        err_warn = string.find(match, "^[WE]%d+", 0)
-        if not err_warn then
-            shorter_stat = shorter_stat .. ' ' .. match
-        end
-    end
-    return shorter_stat
-end
+--local function get_coc_lsp()
+--  local status = vim.fn['coc#status']()
+--  if not status or status == '' then
+--      return ''
+--  end
+--  return lsp_status(status)
+--end
 
-local function get_coc_lsp()
-  local status = vim.fn['coc#status']()
-  if not status or status == '' then
-      return ''
-  end
-  return lsp_status(status)
-end
+--function get_diagnostic_info()
+--  if vim.fn.exists('*coc#rpc#start_server') == 1 then
+--    return get_coc_lsp()
+--    end
+--  return ''
+--end
 
-function get_diagnostic_info()
-  if vim.fn.exists('*coc#rpc#start_server') == 1 then
-    return get_coc_lsp()
-    end
-  return ''
-end
-
-CocStatus = get_diagnostic_info
+--CocStatus = get_diagnostic_info
 
 local buffer_not_empty = function()
   if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
@@ -90,13 +83,6 @@ local checkwidth = function()
 end
 
 -- left
-
---table.insert(gls.left, {
---  FirstElement = {
---    provider = function() return '[ ' end,
---    highlight = {colors.fg,colors.bg,'bold'}
---  },
---})
 
 table.insert(gls.left, {
     ViMode = {
@@ -139,33 +125,6 @@ table.insert(gls.left, {
 })
 
 table.insert(gls.left, {
-  DiffAdd = {
-    provider = 'DiffAdd',
-    condition = checkwidth,
-    icon = '+',
-    highlight = {colors.orange,colors.bg},
-  }
-})
-
-table.insert(gls.left, {
-  DiffModified = {
-    provider = 'DiffModified',
-    condition = checkwidth,
-    icon = '~',
-    highlight = {colors.orange,colors.bg},
-  }
-})
-
-table.insert(gls.left, {
-  DiffRemove = {
-    provider = 'DiffRemove',
-    condition = checkwidth,
-    icon = '-',
-    highlight = {colors.orange,colors.bg},
-  }
-})
-
-table.insert(gls.left, {
   DiagnosticError = {
     provider = 'DiagnosticError',
     icon = ' ',
@@ -185,22 +144,15 @@ table.insert(gls.left, {
   }
 })
 
-table.insert(gls.left, {
-    CocStatus = {
-        provider = CocStatus,
-        separator = ' ',
-        separator_highlight = {'NONE',colors.bg},
-        condition = checkwidth,
-        highlight = {colors.green,colors.bg},
-    }
-})
-
-table.insert(gls.left, {
-    Space = {
-        provider = function() return ' ' end,
-        highlight = {'NONE', 'NONE'}
-    }
-})
+--table.insert(gls.left, {
+--    CocStatus = {
+--        provider = CocStatus,
+--        separator = ' ',
+--        separator_highlight = {'NONE',colors.bg},
+--        condition = checkwidth,
+--        highlight = {colors.green,colors.bg},
+--    }
+--})
 
 -- right
 
@@ -232,16 +184,6 @@ table.insert(gls.right, {
     condition = buffer_not_empty,
     highlight = {colors.fg,colors.bg,'bold'},
   }
-})
-
-table.insert(gls.right, {
-    FileSize = {
-        provider = 'FileSize',
-        separator = ' | ',
-        separator_highlight = {colors.darkblue,colors.bg},
-        condition = buffer_not_empty,
-        highlight = {colors.fg,colors.bg,'bold'},
-    }
 })
 
 -- short line

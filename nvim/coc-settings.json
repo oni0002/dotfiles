@@ -1,19 +1,26 @@
 {
-    "coc.preferences.formatOnType": true,
     "coc.preferences.formatOnSaveFiletypes": [
         "python",
         "json",
-        "markdown",
+        "markdown"
     ],
-    "diagnostic.errorSign": "E",
-    "diagnostic.warningSign": "W",
-    "python.jediEnabled": false,
-    "python.linting.pylintEnabled": false,
+    "diagnostic.warningSign": "", // "",
+    "diagnostic.errorSign": "", // "",
+    "diagnostic.infoSign": "", // "",
+    "diagnostic.hintSign": "", // "",
+    "diagnostic.virtualText": true,
+    "diagnostic.virtualTextPrefix": "  ",
+    "diagnostic.virtualTextCurrentLineOnly": false,
+    "git.changedSign.text": "▌",
+    "git.addedSign.text": "▌",
+    "git.removedSign.text": "▌",
+    "git.changeRemovedSign.text": "▌",
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Args": [
         "--ignore=E501,E203"
     ],
     "python.formatting.provider": "black",
+    "explorer.icon.enableNerdfont": true,
     "explorer.keyMappings.global": {
         "i": false, // cancel default mapkey
         "<tab>": "actionMenu",
@@ -41,10 +48,5 @@
         "<esc>": "esc",
         "f": "search",
         "F": "searchRecursive"
-    },
-    "markdownlint.config": {
-        "MD007": {
-            "indent": 4
-        }
     }
 }

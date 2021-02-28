@@ -11,6 +11,7 @@ set noswapfile  " do not make swapfile
 set noshowcmd  " do not show last command
 set confirm  " confirm before close unsaved file
 set updatetime=300  " default is 4000ms, too slow
+set completeopt=menuone,noinsert,noselect " Set completeopt to have a better completion experience
 set shortmess+=c  " do not pass messages to |ins-completion-menu|
 set lazyredraw  " improve draw performance when navigating through large result
 
@@ -33,8 +34,8 @@ set scrolloff=7  " always 7 lines under cursor
 set wildmenu  " enhanced command line completion
 set hidden  " current buffer go to background instead of close
 
-set concealcursor=nc
-let g:tex_conceal=''
+" set concealcursor=nc
+" let g:tex_conceal=''
 
 " tab settings
 set tabstop=4  " a tab is 4 spaces

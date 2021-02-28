@@ -1,5 +1,7 @@
 # vim:fileencoding=utf-8:ft=conf:foldmethod=marker
 
+set fish_color_autosuggestion brblack
+
 # alias {{{
 alias vim nvim
 alias brew "PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin command brew"
@@ -69,5 +71,8 @@ abbr -a lg lazygit
 # }}}
 
 # other
-## asdf
-# source ~/.asdf/asdf.fish
+pyenv init - | source
+
+# env
+## fzf 
+set -x FZF_DEFAULT_OPTS '--reverse --info=inline --height 40% --border'
