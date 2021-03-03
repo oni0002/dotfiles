@@ -39,34 +39,6 @@ local mode_color = {
     t = colors.blue,
 }
 
---local function lsp_status(status)
---    shorter_stat = ''
---    for match in string.gmatch(status, "[^%s]+")  do
---        err_warn = string.find(match, "^[WE]%d+", 0)
---        if not err_warn then
---            shorter_stat = shorter_stat .. ' ' .. match
---        end
---    end
---    return shorter_stat
---end
-
---local function get_coc_lsp()
---  local status = vim.fn['coc#status']()
---  if not status or status == '' then
---      return ''
---  end
---  return lsp_status(status)
---end
-
---function get_diagnostic_info()
---  if vim.fn.exists('*coc#rpc#start_server') == 1 then
---    return get_coc_lsp()
---    end
---  return ''
---end
-
---CocStatus = get_diagnostic_info
-
 local buffer_not_empty = function()
   if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
     return true
@@ -143,16 +115,6 @@ table.insert(gls.left, {
     highlight = {colors.yellow,colors.bg},
   }
 })
-
---table.insert(gls.left, {
---    CocStatus = {
---        provider = CocStatus,
---        separator = ' ',
---        separator_highlight = {'NONE',colors.bg},
---        condition = checkwidth,
---        highlight = {colors.green,colors.bg},
---    }
---})
 
 -- right
 

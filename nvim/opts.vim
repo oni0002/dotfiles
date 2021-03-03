@@ -1,6 +1,6 @@
 " vim:fileencoding=utf-8:ft=vim:foldmethod=marker
 
-" General {{{
+" Options {{{
 set autoread  " detect file is changed
 set clipboard+=unnamedplus  " use system clipboard
 set mouse=a  " enable mouse
@@ -20,9 +20,7 @@ set ignorecase  " case insensitive search
 set smartcase  " case sensitive if there is capital letter
 
 filetype plugin indent on
-" }}}
 
-" Appearance {{{
 set number  " show line num
 set cursorline  " highlight current line
 set showmatch  " highlight )

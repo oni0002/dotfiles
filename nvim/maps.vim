@@ -44,9 +44,6 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
-" enter:  add new line below
-nnoremap <cr> o<esc>
-
 " H/L: head/end
 noremap H ^
 noremap L $
@@ -90,8 +87,3 @@ inoremap <c-a> <home>
 inoremap <c-e> <end>
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
-
-" Commands {{{
-" Sudo save
-command! W w !sudo tee % > /dev/null
-" }}}

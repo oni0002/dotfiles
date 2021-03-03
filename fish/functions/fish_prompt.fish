@@ -13,7 +13,6 @@ function fish_prompt
     set -l red (set_color -o red)
     set -l blue (set_color -o blue)
     set -l cyan (set_color -o cyan)
-    set -l yellow (set_color -o yellow)
     set -l magenta (set_color -o magenta)
     set -l normal (set_color normal)
 
@@ -41,6 +40,6 @@ function fish_prompt
     echo
 
     # line2
-    echo -n $yellow$venv $normal
+    echo -n $venv $normal
     echo -n $sfx_color$suffix $normal
 end
