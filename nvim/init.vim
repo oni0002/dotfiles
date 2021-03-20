@@ -7,9 +7,9 @@ endif
 let g:loaded_python_provider = 0
 " }}}
 
+" options
+source $HOME/.config/nvim/opts.vim
 " keymap
 source $HOME/.config/nvim/maps.vim
 " plugins
 source $HOME/.config/nvim/plugs.vim
-" options
-source $HOME/.config/nvim/opts.vim

@@ -1,6 +1,10 @@
-" vim:fileencoding=utf-8:ft=vim:foldmethod=marker
+filetype plugin indent on
 
-" Options {{{
+if (has("termguicolors"))
+    set termguicolors
+endif
+syntax enable
+
 set autoread  " detect file is changed
 set clipboard+=unnamedplus  " use system clipboard
 set mouse=a  " enable mouse
@@ -15,11 +19,8 @@ set completeopt=menuone,noinsert,noselect " Set completeopt to have a better com
 set shortmess+=c  " do not pass messages to |ins-completion-menu|
 set lazyredraw  " improve draw performance when navigating through large result
 
-" searching
 set ignorecase  " case insensitive search
 set smartcase  " case sensitive if there is capital letter
-
-filetype plugin indent on
 
 set number  " show line num
 set cursorline  " highlight current line
@@ -32,10 +33,6 @@ set scrolloff=7  " always 7 lines under cursor
 set wildmenu  " enhanced command line completion
 set hidden  " current buffer go to background instead of close
 
-" set concealcursor=nc
-" let g:tex_conceal=''
-
-" tab settings
 set tabstop=4  " a tab is 4 spaces
 set softtabstop=4  " <tab> inserts 4 spaces
 set shiftwidth=4  " indent is 4 spaces
@@ -44,7 +41,11 @@ set smarttab  " tab respects 'tabstop', 'softtabstop' and 'shiftwidth'
 set autoindent
 set smartindent
 
-" invisible character
 set list  " show invisible chaeacter
 set listchars=tab:>-,trail:⋅,extends:>,precedes:<
-" }}}
+
+" Leader key: <space>
+let mapleader = "\<space>"
+let maplocalleader = ','
+
+" vim:fileencoding=utf-8:ft=vim:foldmethod=marker

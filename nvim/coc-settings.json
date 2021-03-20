@@ -1,25 +1,37 @@
 {
+    "coc.preferences.formatOnType": true,
     "coc.preferences.formatOnSaveFiletypes": [
         "python",
         "json",
         "markdown"
     ],
-    "diagnostic.warningSign": "", // "",
-    "diagnostic.errorSign": "", // "",
-    "diagnostic.infoSign": "", // "",
-    "diagnostic.hintSign": "", // "",
     "diagnostic.virtualText": true,
-    "diagnostic.virtualTextPrefix": "  ",
-    "diagnostic.virtualTextCurrentLineOnly": false,
-    "git.changedSign.text": "▌",
-    "git.addedSign.text": "▌",
-    "git.removedSign.text": "▌",
-    "git.changeRemovedSign.text": "▌",
+    "diagnostic.virtualTextPrefix": "   > ",
+    "diagnostic.virtualTextCurrentLineOnly": true,
+    "diagnostic.enableHighlightLineNumber": false,
+    "diagnostic.warningSign": "W", // "",
+    "diagnostic.errorSign": "E", // "",
+    "diagnostic.infoSign": "I", // "",
+    "diagnostic.hintSign": "H", // "",
+    "snippets.ultisnips.directories": [
+        "snippets"
+    ],
+    "git.changedSign.text": "▎", // "▌"
+    "git.addedSign.text": "▎", // "▌"
+    "git.removedSign.text": "▎", // "▌"
+    "git.changeRemovedSign.text": "▎", // "▌"
+    "tabnine.disable_filetypes": [
+        "python"
+    ],
+    "Lua.diagnostics.globals": [
+        "vim"
+    ],
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Args": [
         "--ignore=E501,E203"
     ],
     "python.formatting.provider": "black",
+    "highlight.colorNames.enable": false,
     "explorer.icon.enableNerdfont": true,
     "explorer.keyMappings.global": {
         "i": false, // cancel default mapkey

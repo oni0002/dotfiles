@@ -1,9 +1,4 @@
-" Leader key: <space>
-let mapleader = "\<space>"
-let maplocalleader = ','
-
-" ## Normal and Visual mode
-
+" ## Normal and Visual mode {{{
 " c-s: save
 nnoremap <c-s> :update<cr>
 inoremap <c-s> <c-o>:update<cr>
@@ -73,9 +68,9 @@ nnoremap [b :bp<cr>
 " ]/[-t: switch next/prev tab
 nnoremap ]t :tabn<cr>
 nnoremap [t :tabp<cr>
+" }}}
 
-" ## Insert and Command mode
-
+" ## Insert and Command mode {{{
 " c-f/b in I,C mode: forward/back
 inoremap <c-f> <right>
 inoremap <c-b> <left>
@@ -87,3 +82,4 @@ inoremap <c-a> <home>
 inoremap <c-e> <end>
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
+" }}}

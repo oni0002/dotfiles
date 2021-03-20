@@ -13,7 +13,7 @@ abbr -a br brew
 abbr -a brdoc brew doctor
 abbr -a brupd brew update  # update
 abbr -a brupg brew upgrade  # upgrade
-abbr -a brsr brew search  # search
+abbr -a brs brew search  # search
 abbr -a brins brew install  # install
 abbr -a brrm brew remove  # uninstall(remove)
 abbr -a brarm brew autoremove  # autoremove
@@ -24,7 +24,7 @@ abbr -a brls brew list  # list
 ## apt {{{
 abbr -a apupd sudo apt update  # update
 abbr -a apupg sudo apt upgrade  # upgrade
-abbr -a apsr sudo apt search  # search
+abbr -a aps sudo apt search  # search
 abbr -a apins sudo apt install  # install
 abbr -a aprm sudo apt remove --purge  # uninstall(remove)
 abbr -a aparm sudo apt autoremove
@@ -35,7 +35,7 @@ abbr -a apls sudo dpkg -l  # list
 ## pacman {{{
 abbr -a pac pacman
 abbr -a pacup sudo pacman -Syyu  # update and upgrade
-abbr -a pacsear sudo pacman -Ss  # search
+abbr -a pacs sudo pacman -Ss  # search
 abbr -a pacins sudo pacman -S  # install
 abbr -a pacrm sudo pacman -Rs  # uninstall(remove)
 abbr -a paccle sudo pacman -Scc  # clean
@@ -67,6 +67,7 @@ abbr -a fils fisher ls
 
 ## other {{{
 abbr -a lg lazygit
+abbr -a tbl tensorboard --logdir=logs/
 # }}}
 # }}}
 

@@ -1,185 +1,119 @@
-local gl = require('galaxyline')
-local gls = gl.section
-gl.short_line_list = {'NvimTree','vista','dbui'}
-
--- moonfly color
-local colors = {
-    bg = '#080808',
-    fg = '#c6c6c6',
-    red = '#ff5454',
-    green = '#8cc85f',
-    yellow = '#e3c78a',
-    blue = '#80a0ff',
-    purple = '#d183e8',
-    cyan = '#79dac8',
-    white = '#dadada',
-    lightgray = '#626262',
-    darkgray = '#3a3a3a'
+-- Bubbly {{{
+-- vim.g.bubbly_characters = { left = '▐', right = '▌' }
+-- vim.g.bubbly_characters = { left = '█', right = '█' }
+vim.g.bubbly_statusline = {
+    'mode',
+    'truncate',
+    'path',
+    'branch',
+    'coc',
+    'divisor',
+    'filetype',
+    'progress'}
+vim.g.bubbly_palette = {
+    background = "#000000",
+    foreground = "#999999",
+    black = "#000000",
+    red = "#997a7a",
+    green = "#85997a",
+    yellow = "#99997a",
+    blue = "#7a8599",
+    purple = "#997a99",
+    cyan = "#7a9999",
+    white = "#cccccc",
+    lightgrey = "#4d4d4d",
+    darkgrey = "#1a1a1a",
 }
-
-local mode_alias = {
-    n = 'NORMAL',
-    i = 'INSERT',
-    v ='VISUAL',
-    [''] = 'VISUAL',
-    V = 'VISUAL',
-    c = 'COMMAND',
-    R  = 'REPLACE',
-    t  = 'TERM',
-}
-
-local mode_color = {
-    n = colors.green,
-    i = colors.blue,
-    v=colors.red,
-    [''] = colors.red,
-    V=colors.red,
-    c = colors.red,
-    R = colors.yellow,
-    t = colors.blue,
-}
-
-local buffer_not_empty = function()
-  if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
-    return true
-  end
-  return false
-end
-
-local checkwidth = function()
-  local squeeze_width  = vim.fn.winwidth(0) / 2
-  if squeeze_width > 40 then
-    return true
-  end
-  return false
-end
-
--- left
-
-table.insert(gls.left, {
-    ViMode = {
-    provider = function()
-        -- auto change color according the vim mode
-        local vim_mode = vim.fn.mode()
-        vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color[vim_mode])
-        return mode_alias[vim_mode]..' '
-    end,
-    separator = ' ',
-    separator_highlight = {'NONE', colors.bg},
-    highlight = {'NONE',colors.bg,'bold'},
+vim.g.bubbly_colors = {
+    path = {
+        readonly = { background = 'white', foreground = 'black' },
+        unmodifiable = { background = 'white', foreground = 'black' },
+        path = { background = 'white', foreground = 'black' },
+        modified = { background = 'white', foreground = 'black' },
     },
-})
+    branch = { background = 'background', foreground = 'foreground' },
+    filetype = { background = 'background', foreground = 'foreground' },
+    progress = { 
+        rowandcol = { background = 'black', foreground = 'foreground' },
+        percentage = { background = 'black', foreground = 'foreground' },
+    },
+    tabline = {
+    active = { background = 'white', foreground = 'black' },
+    inactive = { background = 'background', foreground = 'foreground' }
+    }
+}
+vim.g.bubbly_inactive_color = {
+    background = 'background',
+    foreground = 'foreground'
+}
+vim.g.bubbly_styles = {
+    path = {
+        path = 'bold'
+    },
+    tabline = {
+        inactive = 'bold'
+    }
+}
+-- }}}
 
-table.insert(gls.left, {
-  FileName = {
-    provider = {'FileName'},
-    separator = ' ',
-    separator_highlight = {'NONE', colors.bg},
-    condition = buffer_not_empty,
-    highlight = {colors.fg,colors.bg,'bold'}
-  }
-})
-
-table.insert(gls.left, {
-  GitIcon = {
-    provider = function() return ' ' end,
-    condition = require('galaxyline.provider_vcs').check_git_workspace,
-    highlight = {colors.yellow,colors.bg, 'bold'},
-  }
-})
-
-table.insert(gls.left, {
-  GitBranch = {
-    provider = 'GitBranch',
-    condition = require('galaxyline.provider_vcs').check_git_workspace,
-    highlight = {colors.yellow,colors.bg,'bold'},
-  }
-})
-
-table.insert(gls.left, {
-  DiagnosticError = {
-    provider = 'DiagnosticError',
-    icon = ' ',
-    separator = ' ',
-    separator_highlight = {'NONE',colors.bg},
-    highlight = {colors.red,colors.bg}
-  }
-})
-
-table.insert(gls.left, {
-  DiagnosticWarn = {
-    provider = 'DiagnosticWarn',
-    icon = ' ',
-    separator = ' ',
-    separator_highlight = {'NONE',colors.bg},
-    highlight = {colors.yellow,colors.bg},
-  }
-})
-
--- right
-
-table.insert(gls.right, {
-  FileFormat = {
-    provider = 'FileFormat',
-    separator = ' ',
-    separator_highlight = {'NONE', colors.bg},
-    condition = buffer_not_empty,
-    highlight = {colors.fg,colors.bg,'bold'}
-  }
-})
-
-table.insert(gls.right, {
-  LineInfo = {
-    provider = 'LineColumn',
-    separator = ' | ',
-    separator_highlight = {colors.darkblue,colors.bg},
-    condition = buffer_not_empty,
-    highlight = {colors.fg,colors.bg},
-  },
-})
-
-table.insert(gls.right, {
-  PerCent = {
-    provider = 'LinePercent',
-    separator = ' |',
-    separator_highlight = {colors.darkblue,colors.bg},
-    condition = buffer_not_empty,
-    highlight = {colors.fg,colors.bg,'bold'},
-  }
-})
-
--- short line
-
-table.insert(gls.short_line_left, {
-  BufferType = {
-    provider = 'FileTypeName',
-    separator = ' ',
-    separator_highlight = {'NONE','NONE'},
-    highlight = {colors.fg,'NONE','bold'}
-  }
-})
-
-table.insert(gls.short_line_left, {
-  SFileName = {
-    provider = function ()
-      local fileinfo = require('galaxyline.provider_fileinfo')
-      local fname = fileinfo.get_current_file_name()
-      for _,v in ipairs(gl.short_line_list) do
-        if v == vim.bo.filetype then
-          return ''
+-- Express_line {{{
+--[[ local bui = require('el.builtin')
+local ext = require('el.extensions')
+local sec = require('el.sections')
+local sub = require('el.subscribe')
+local hi = sec.highlight
+local col = sec.collapse_builtin
+local space = " "
+local mode = ext.gen_mode({format_string = " [%s] "})
+local file = bui.shortened_file
+local ft = space .. bui.filetype_list .. space
+local ro = col{space, bui.readonly_list}
+local mod = col{space, bui.modified}
+-- local lines = space .. bui.line_with_width(3) .. ":" .. bui.column_with_width(3) .. space
+local lines = space .. bui.line .. ":" .. bui.column .. space
+local split = sec.split
+local gbranch = sub.buf_autocmd('el_git_branch', 'BufEnter', function (win, buf)
+    local branch = ext.git_branch(win, buf)
+    if branch then
+        return space .. "".. space .. branch .. space
+    end
+end)
+local coc_count = function(_, buf, severity)
+    local ok, res = pcall(vim.api.nvim_buf_get_var, buf.bufnr, 'coc_diagnostic_info') -- {'information': 0, 'hint': 0, 'lnums': [29, 13, 0, 0], 'warning': 15, 'error': 2}
+    if ok then
+        local count = res[severity]
+        if count > 0 then
+            return string.format("%s%s", severity:sub(1,1):upper(), count)
         end
-      end
-      return fname
-    end,
-    condition = buffer_not_empty,
-    highlight = {colors.fg,'NONE','bold'}
-  }
-})
+        return ""
+    end
+end
+local coc_diag = function(win, buf)
+    local diags = {
+        coc_count(win, buf, "warning"),
+        coc_count(win, buf, "error"),
+    }
+    return space .. table.concat(diags, " ") .. space
+end
+local coc_status = vim.g.coc_status
 
-table.insert(gls.short_line_right, {
-  BufferIcon = {
-    provider= 'BufferIcon',
-    highlight = {colors.fg,'NONE'}
-  }
-})
+require('el').setup {
+    generator = function(_, _)
+        return {
+            mode,
+            gbranch,
+            coc_diag,
+            coc_status,
+            split,
+            file,
+            ro,
+            mod,
+            split,
+            ft,
+            lines,
+        }
+    end
+} ]]
+-- }}}
 
+-- vim:fileencoding=utf-8:ft=lua:foldmethod=marker
