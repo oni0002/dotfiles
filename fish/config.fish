@@ -80,13 +80,13 @@ abbr -a tbl tensorboard --logdir=logs/
 # }}}
 # }}}
 
+# asdf
+. ~/.asdf/asdf.fish
+
+asdf exec direnv hook fish | source
 # other
 # pyenv init - | source
 # direnv hook fish | source
-asdf exec direnv hook fish | source
-
-. ~/.asdf/asdf.fish
-
 # env
 ## ndoebrew
 # set -x PATH $HOME/.nodebrew/current/bin $PATH
