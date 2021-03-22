@@ -56,7 +56,14 @@ SETUVAR _fish_abbr_pacins:sudo\x20pacman\x20\x2dS
 SETUVAR _fish_abbr_pacrm:sudo\x20pacman\x20\x2dRs
 SETUVAR _fish_abbr_pacs:sudo\x20pacman\x20\x2dSs
 SETUVAR _fish_abbr_pacup:sudo\x20pacman\x20\x2dSyyu
+SETUVAR _fish_abbr_pfre:pip\x20freeze
+SETUVAR _fish_abbr_pins:pip\x20install
+SETUVAR _fish_abbr_pinsr:pip\x20install\x20\x2dr\x20requirements\x2etxt
+SETUVAR _fish_abbr_preq:pip\x20freeze
+SETUVAR _fish_abbr_prm:pip\x2dautoremove
+SETUVAR _fish_abbr_ptre:pipdeptree
 SETUVAR _fish_abbr_tbl:tensorboard\x20\x2d\x2dlogdir\x3dlogs/
+SETUVAR _fish_abbr_vim:nvim
 SETUVAR _fisher_jethrokuan_2F_fzf_files:/Users/ly/\x2econfig/fish/functions/__fzf_cd\x2efish\x1e/Users/ly/\x2econfig/fish/functions/__fzf_complete\x2efish\x1e/Users/ly/\x2econfig/fish/functions/__fzf_complete_preview\x2efish\x1e/Users/ly/\x2econfig/fish/functions/__fzf_find_file\x2efish\x1e/Users/ly/\x2econfig/fish/functions/__fzf_get_dir\x2efish\x1e/Users/ly/\x2econfig/fish/functions/__fzf_open\x2efish\x1e/Users/ly/\x2econfig/fish/functions/__fzf_parse_commandline\x2efish\x1e/Users/ly/\x2econfig/fish/functions/__fzf_reverse_isearch\x2efish\x1e/Users/ly/\x2econfig/fish/functions/__fzfcmd\x2efish\x1e/Users/ly/\x2econfig/fish/conf\x2ed/fzf\x2efish\x1e/Users/ly/\x2econfig/fish/conf\x2ed/fzf_key_bindings\x2efish
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:/Users/ly/\x2econfig/fish/functions/fisher\x2efish\x1e/Users/ly/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_plugins:jethrokuan/fzf\x1ejorgebucaran/fisher

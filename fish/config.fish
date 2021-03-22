@@ -3,7 +3,6 @@
 set fish_color_autosuggestion brblack
 
 # alias {{{
-alias vim nvim
 alias brew "PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin command brew"
 # }}}
 
@@ -41,6 +40,22 @@ abbr -a pacrm sudo pacman -Rs  # uninstall(remove)
 abbr -a paccle sudo pacman -Scc  # clean
 # }}}
 
+## fisher {{{
+abbr -a fiupd fisher update
+abbr -a fiins fisher install
+abbr -a firm fisher remove
+abbr -a fils fisher ls
+# }}}
+
+## pip {{{
+abbr -a pins pip install
+abbr -a pinsr pip install -r requirements.txt
+abbr -a prm pip-autoremove
+abbr -a pfre pip freeze
+abbr -a ptre pipdeptree
+abbr -a preq pip freeze > requirements.txt
+# }}}
+
 ## git {{{
 abbr -a g git
 abbr -a gadd git add -A  # stage all changed file
@@ -58,22 +73,22 @@ abbr -a gpul git pull
 abbr -a gls git ls-files
 # }}}
 
-## fisher {{{
-abbr -a fiupd fisher update
-abbr -a fiins fisher install
-abbr -a firm fisher remove
-abbr -a fils fisher ls
-# }}}
-
 ## other {{{
+abbr -a vim nvim
 abbr -a lg lazygit
 abbr -a tbl tensorboard --logdir=logs/
 # }}}
 # }}}
 
 # other
-pyenv init - | source
+# pyenv init - | source
+# direnv hook fish | source
+asdf exec direnv hook fish | source
+
+. ~/.asdf/asdf.fish
 
 # env
+## ndoebrew
+# set -x PATH $HOME/.nodebrew/current/bin $PATH
 ## fzf 
-set -x FZF_DEFAULT_OPTS '--reverse --info=inline --height 40% --border'
+# set -x FZF_DEFAULT_OPTS '--reverse --info=inline --height 40% --border'

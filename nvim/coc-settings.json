@@ -30,7 +30,10 @@
     "python.linting.flake8Args": [
         "--ignore=E501,E203"
     ],
-    "python.formatting.provider": "black",
+    "python.formatting.provider": "yapf",
+    "python.formatting.yapfArgs": [
+        "--style={spaces_around_power_operator: True}"
+    ],
     "highlight.colorNames.enable": false,
     "explorer.icon.enableNerdfont": true,
     "explorer.keyMappings.global": {

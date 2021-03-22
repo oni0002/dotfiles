@@ -10,10 +10,10 @@ set __fish_git_prompt_char_stateseparator ' '
 function fish_prompt
     set -l last_status $status
     # colors
-    set -l red (set_color -o red)
+    set -l red (set_color -o brred)
     set -l blue (set_color -o blue)
     set -l cyan (set_color -o cyan)
-    set -l magenta (set_color -o magenta)
+    set -l magenta (set_color -o brmagenta)
     set -l normal (set_color normal)
 
     if test $last_status -ne 0
