@@ -49,6 +49,7 @@ SETUVAR _fish_abbr_greb:git\x20rebase\x20\x2di\x20HEAD\x7e
 SETUVAR _fish_abbr_gref:git\x20reflog
 SETUVAR _fish_abbr_gres:git\x20reset
 SETUVAR _fish_abbr_gsta:git\x20status
+SETUVAR _fish_abbr_gu:gitui
 SETUVAR _fish_abbr_lg:lazygit
 SETUVAR _fish_abbr_pac:pacman
 SETUVAR _fish_abbr_paccle:sudo\x20pacman\x20\x2dScc

@@ -5,7 +5,6 @@ if (has("termguicolors"))
 endif
 syntax enable
 
-set autoread  " detect file is changed
 set clipboard+=unnamedplus  " use system clipboard
 set mouse=a  " enable mouse
 set splitbelow splitright  " split window below/right
@@ -25,20 +24,15 @@ set smartcase  " case sensitive if there is capital letter
 set number  " show line num
 set cursorline  " highlight current line
 set showmatch  " highlight )
-set cmdheight=1  " command bar height
 set signcolumn=yes  " always show signcolumn
 set noshowmode  " do not show mode
 set showbreak=>\   " show '> ' before break line
 set scrolloff=7  " always 7 lines under cursor
-set wildmenu  " enhanced command line completion
-set hidden  " current buffer go to background instead of close
 
 set tabstop=4  " a tab is 4 spaces
 set softtabstop=4  " <tab> inserts 4 spaces
 set shiftwidth=4  " indent is 4 spaces
 set expandtab  " use only space, not tab
-set smarttab  " tab respects 'tabstop', 'softtabstop' and 'shiftwidth'
-set autoindent
 set smartindent
 
 set list  " show invisible chaeacter

@@ -11,147 +11,43 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
     \| endif
 " }}}
 
-" # Plugins list {{{
+" # plugins list
 call plug#begin()
-
-" LSP and those replaced by COC {{{
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'glepnir/lspsaga.nvim'
-" Plug 'alexaandru/nvim-lspupdate'
-
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
-
-" Plug 'nvim-lua/completion-nvim'
-" Plug 'lukas-reineke/format.nvim'
-
-" Plug 'kyazdani42/nvim-tree.lua'
-
-" Plug 'lewis6991/gitsigns.nvim'
-
-" Plug 'windwp/nvim-autopairs'
-" }}}
+" coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'honza/vim-snippets'
+Plug 'rafamadriz/friendly-snippets'
+" telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+" floaterm
 Plug 'voldikss/vim-floaterm'
-Plug 'liuchengxu/vista.vim'
+" cleverf
 Plug 'rhysd/clever-f.vim'
+" comment
 Plug 'b3nj5m1n/kommentary'
-Plug 'Konfekt/FastFold'
+" autopair
+Plug 'windwp/nvim-autopairs'
+" statusline
+Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'ryanoasis/vim-devicons'
+" start
 Plug 'mhinz/vim-startify'
-Plug 'datwaft/bubbly.nvim'
-" Plug 'tjdevries/express_line.nvim'
 " Colorscheme
 Plug 'lynd2299/neg.vim'
-Plug 'tmhedberg/SimpylFold', {'for': 'python'}
-Plug 'jeetsukumaran/vim-pythonsense', {'for': 'python'}
-
 call plug#end()
-" }}}
 
 " # Plugin settings {{{
-" LSP and those replaced by COC {{{
-" ## LSP {{{
-" lua << EOF
-" local nvim_lsp = require('lspconfig')
-
-" local servers = { "pyright" }
-
-" for _, lsp in ipairs(servers) do
-"   nvim_lsp[lsp].setup{}
-" end
-
-" require 'format'.setup{
-"     python = {
-"         { cmd = {"black", "isort"} }
-"     }
-" }
-" EOF
-
-" augroup Format
-"     autocmd!
-"     autocmd BufWritePost * FormatWrite
-" augroup END
-
-" " ### completion
-" autocmd BufEnter * lua require'completion'.on_attach()
-" let g:completion_enable_snippet = 'UltiSnips'
-
-" " Use <Tab> and <S-Tab> to navigate through popup menu
-" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" " ### lspsaga
-" lua << EOF
-" require'lspsaga'.init_lsp_saga {
-"     use_saga_diagnostic_sign = false,
-"     finder_action_keys = {
-"         open = '<cr>', vsplit = '<c-v>', split = '<c-x>', quit = '<c-c>', scroll_down = '<c-f>', scroll_up = '<c-b>'
-"     },
-"     border_style = 2
-" }
-" EOF
-
-" " lsp provider to find the cursor word definition and reference
-" nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
-
-" " code action
-" nnoremap <silent><leader>a <cmd>lua require('lspsaga.codeaction').code_action()<CR>
-" vnoremap <silent><leader>a <cmd>'<,'>lua require('lspsaga.codeaction').range_code_action()<CR>
-
-" " show hover doc
-" nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
-" " scroll down hover doc or scroll in definition preview
-" nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
-" " scroll up hover doc
-" nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
-
-" " show signature help
-" nnoremap <silent> gs <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
-
-" " rename
-" nnoremap <silent> <leader>rn <cmd>lua require('lspsaga.rename').rename()<CR>
-
-" " preview definition
-" nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
-
-" " show
-" nnoremap <silent><leader>cd <cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>
-" " jump diagnostic
-" nnoremap <silent> [e <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>
-" nnoremap <silent> ]e <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>
-" }}}
-
-" ## Gitsigns {{{
-" lua require'gitsigns'.setup()
-" }}}
-
-" ## Nvim-tree {{{
-" nnoremap <leader>e :NvimTreeToggle<cr>
-" }}}
-
-" ## Autopairs {{{
-" lua require('nvim-autopairs').setup()
-" }}}
-" }}}
-
 " ## Coc {{{
 " ### coc config {{{
 " global extensions
 let g:coc_global_extensions = [
             \'coc-snippets',
-            \'coc-pairs',
             \'coc-lists',
             \'coc-json',
             \'coc-git',
             \'coc-pyright',
             \'coc-explorer',
-            \'coc-floaterm',
             \'coc-tabnine',
             \]
 
@@ -273,8 +169,10 @@ xmap <leader>x  <Plug>(coc-convert-snippet)
 lua << EOF
 require('telescope').setup{
     defaults = {
-        prompt_position = "top",
         sorting_strategy = "ascending",
+        layout_config = {
+            prompt_position = "top"
+        },
         file_sorter = require'telescope.sorters'.get_fzy_sorter,
         generic_sorter = require'telescope.sorters'.get_fzy_sorter
     }
@@ -316,16 +214,6 @@ tnoremap <silent> <F12> <c-\><c-n>:<c-u>FloatermToggle<cr>
 " tnoremap <silent> <c-l> <c-\><c-n>:<c-u>FloatermNext<cr>
 " }}}
 
-" ## Vista {{{
-let g:vista_default_executive = 'coc'
-
-" autoclose when vista left alone
-autocmd bufenter * if (winnr("$") == 1 && &filetype =~# 'vista') | q | endif
-
-" ,o to toggle display outline
-nnoremap <silent> <leader>v :<c-u>Vista!!<cr>
-" }}}
-
 " ## Kommentary {{{
 lua << EOF
 require('kommentary.config').configure_language("python", {
@@ -334,10 +222,14 @@ require('kommentary.config').configure_language("python", {
 })
 EOF
 let g:kommentary_create_default_mappings = 0
-nmap <silent> <leader>cc <Plug>kommentary_line_default
-nmap <silent> <leader>c <Plug>kommentary_motion_default
+nmap <silent> <leader>c <Plug>kommentary_line_default
+" nmap <silent> <leader>c <Plug>kommentary_motion_default
 vmap <silent> <leader>c <Plug>kommentary_visual_default
 " }}}
+
+" ## nvim-autopairs {{{
+lua require('nvim-autopairs').setup()
+"  }}}
 
 " ## Clever-f {{{
 " Enable ignorecase
@@ -384,10 +276,6 @@ let g:startify_bookmarks = [
         \{ 'p': '~/dotfiles/nvim/plugs.vim' },
         \{ 'f': '~/dotfiles/fish/config.fish' }
         \]
-" }}}
-
-" ## SimpylFold {{{
-let g:SimpylFold_docstring_preview = 1
 " }}}
 " }}}
 

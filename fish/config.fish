@@ -76,6 +76,7 @@ abbr -a gls git ls-files
 ## other {{{
 abbr -a vim nvim
 abbr -a lg lazygit
+abbr -a gu gitui
 abbr -a tbl tensorboard --logdir=logs/
 # }}}
 # }}}

@@ -14,7 +14,7 @@
     "diagnostic.infoSign": "I", // "",
     "diagnostic.hintSign": "H", // "",
     "snippets.ultisnips.directories": [
-        "snippets"
+        "friendly-snippets"
     ],
     "git.changedSign.text": "▎", // "▌"
     "git.addedSign.text": "▎", // "▌"
