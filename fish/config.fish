@@ -75,8 +75,12 @@ abbr -a gls git ls-files
 
 ## other {{{
 abbr -a vim nvim
+abbr -a mv mv -i
 abbr -a lg lazygit
 abbr -a gu gitui
+abbr -a rm trash-put --trash-dir=/Users/ly/.Trash -v
+abbr -a trls trash-list --trash-dir=/Users/ly/.Trash
+abbr -a res trash-restore --trash-dir=/Users/ly/.Trash
 abbr -a tbl tensorboard --logdir=logs/
 # }}}
 # }}}
@@ -86,10 +90,4 @@ abbr -a tbl tensorboard --logdir=logs/
 
 asdf exec direnv hook fish | source
 # other
-# pyenv init - | source
 # direnv hook fish | source
-# env
-## ndoebrew
-# set -x PATH $HOME/.nodebrew/current/bin $PATH
-## fzf 
-# set -x FZF_DEFAULT_OPTS '--reverse --info=inline --height 40% --border'

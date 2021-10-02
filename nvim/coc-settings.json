@@ -8,18 +8,18 @@
     "list.nextKeymap": "<c-n>",
     "list.previousKeymap": "<c-p>",
     "codeLens.enable": true,
-    "suggest.floatConfig": {
-        "border": true
-    },
-    "diagnostic.floatConfig": {
-        "border": true
-    },
-    "signature.floatConfig": {
-        "border": true
-    },
-    "hover.floatConfig": {
-        "border": true
-    },
+    // "suggest.floatConfig": {
+    //     "border": true
+    // },
+    // "diagnostic.floatConfig": {
+    //     "border": true
+    // },
+    // "signature.floatConfig": {
+    //     "border": true
+    // },
+    // "hover.floatConfig": {
+    //     "border": true
+    // },
     "suggest.completionItemKindLabels": {
         "keyword": "\uf1de",
         "variable": "\ue79b",
@@ -78,9 +78,9 @@
     "python.linting.flake8Args": [
         "--ignore=E501,E203"
     ],
-    "python.formatting.provider": "yapf",
-    "python.formatting.yapfArgs": [
-        "--style={spaces_around_power_operator: True}"
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "-l 120"
     ],
     "texlab.build.args": [
         "-interaction=nonstopmode",

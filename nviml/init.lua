@@ -432,6 +432,20 @@ local lsp = require('lspconfig')
 local coq = require('coq')
 -- local nullls = require('null-ls')
 
+vim.lsp.setup({
+  floating_preview = { border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" } },
+  diagnostics = {
+    signs = { error = " ", warning = " ", hint = " ", information = " " },
+    display = {
+      underline = true,
+      update_in_insert = false,
+      -- virtual_text = { spacing = 4, prefix = "●" },
+      virtual_text = false,
+      severity_sort = true,
+    },
+  },
+})
+
 -- require('config.nullls')
 
 -- language specific
