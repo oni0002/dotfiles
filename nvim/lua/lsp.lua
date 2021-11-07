@@ -5,6 +5,20 @@ local coq = require('coq')
 
 -- require('config.nullls')
 
+vim.lsp.setup({
+  floating_preview = { border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" } },
+  diagnostics = {
+    signs = { error = " ", warning = " ", hint = " ", information = " " },
+    display = {
+      underline = true,
+      update_in_insert = false,
+      -- virtual_text = { spacing = 4, prefix = "●" },
+      virtual_text = false,
+      severity_sort = true,
+    },
+  },
+})
+
 -- language specific
 local configs = {
   lua = require('lua-dev').setup({
@@ -37,4 +51,14 @@ require('lspinstall').post_install_hook = function()
   vim.cmd('bufdo e') -- this triggers the FileType autocmd that starts the server
 end
 
-require('lspkind').init()
+-- map
+local nest = require('nest')
+nest.applyKeymaps({
+    {'gd', '<cmd>lua vim.lsp.buf.definition()<cr>'},
+    {'K', '<cmd>lua vim.lsp.buf.hover()<cr>'},
+    {'<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>'},
+    {'gr', '<cmd>lua vim.lsp.buf.reference()<cr>'},
+    {'<leader>f', '<cmd>lua vim.lsp.buf.formatting()<cr>'},
+    {'<leader>xx', '<cmd>TroubleToggle<cr>'},
+    {'<leader>f', '<cmd>Format<cr>'},
+})

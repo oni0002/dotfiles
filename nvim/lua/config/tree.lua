@@ -1,7 +1,8 @@
 local g = vim.g
 local tree_cb = require('nvim-tree.config').nvim_tree_callback
+local nest = require('nest')
 
-g.nvim_tree_auto_close = 1
+require('nvim-tree').setup()
 g.nvim_tree_quit_on_open = 1
 
 g.nvim_tree_bindings = {
@@ -21,3 +22,8 @@ g.nvim_tree_bindings = {
   { key = '-', cb = tree_cb('dir_up') },
   { key = 'q', cb = tree_cb('close') },
 }
+
+-- maps
+nest.applyKeymaps({
+    {'<c-e>', '<cmd>NvimTreeToggle<cr>'}
+})

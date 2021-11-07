@@ -8,7 +8,6 @@ alias brew "PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin co
 
 # abbr {{{
 ## brew {{{
-abbr -a br brew
 abbr -a brdoc brew doctor
 abbr -a brupd brew update  # update
 abbr -a brupg brew upgrade  # upgrade

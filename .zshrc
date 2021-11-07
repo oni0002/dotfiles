@@ -67,3 +67,5 @@ eval "$(asdf exec direnv hook zsh)"
 # eval "$(pyenv init -)"
 # node
 # export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+source /Users/ly/.config/broot/launcher/bash/br

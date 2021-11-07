@@ -6,3 +6,12 @@ require('kommentary.config').configure_language('default', {
 require('kommentary.config').configure_language('python', {
   single_line_comment_string = '#',
 })
+
+-- map
+local nest = require('nest')
+
+nest.applyKeymaps({
+    options = {noremap = false},
+    {mode = 'n', {'<leader>c', '<Plug>kommentary_line_default'}},
+    {mode = 'x', {'<leader>c', '<Plug>kommentary_visual_default'}},
+})

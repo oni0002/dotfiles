@@ -81,8 +81,8 @@ Plug 'kdheepak/tabline.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 " start
 Plug 'mhinz/vim-startify'
-" Colorscheme
-Plug 'lynd2299/neg.vim'
+" colorscheme
+" Plug 'lynd2299/neg.vim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 call plug#end()
 
@@ -156,7 +156,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " format selected region
-xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format)
 
 augroup mygroup
@@ -167,15 +166,8 @@ augroup mygroup
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
 " Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>a  <Plug>(coc-codeaction)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -197,7 +189,6 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
-
 nnoremap <silent> <c-e> :<c-u>CocCommand explorer<cr>
 " Autoclose when coc-explorer left alone
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
@@ -205,18 +196,10 @@ autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | end
 
 " Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
 let g:coc_snippet_next = '<tab>'
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
 let g:coc_snippet_next = '<c-j>'
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
 let g:coc_snippet_prev = '<c-k>'
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-" Use <leader>x for convert visual selected code to snippet
-xmap <leader>x  <Plug>(coc-convert-snippet)
 " }}}
 
 " --- Telescope {{{
@@ -249,20 +232,16 @@ nnoremap <silent> [Tele]cd <cmd>Telescope coc diagnostics<cr>
 nnoremap <silent> [Tele]ca <cmd>Telescope coc code_actions<cr>
 " }}}
 
-" --- Kommentary {{{
+" --- kommentary {{{
 lua << EOF
+vim.g.kommentary_create_default_mappings = false
+vim.api.nvim_set_keymap("n", "<leader>c", "<Plug>kommentary_line_default", {})
+vim.api.nvim_set_keymap("x", "<leader>c", "<Plug>kommentary_visual_default", {})
 require('kommentary.config').configure_language("default", {
     prefer_single_line_comments = true,
 })
-require('kommentary.config').configure_language("python", {
-    single_line_comment_string = "#",
-})
 EOF
-let g:kommentary_create_default_mappings = 0
-nmap <silent> <leader>c <Plug>kommentary_line_default
-" nmap <silent> <leader>c <Plug>kommentary_motion_default
-vmap <silent> <leader>c <Plug>kommentary_visual_default
-" }}}
+"  }}}
 
 " --- Startify: {{{
 let g:startify_change_to_dir = 0
@@ -288,7 +267,7 @@ let g:startify_commands = [
 
 " bookmarks
 let g:startify_bookmarks = [
-    \ { 'c': '~/dotfiles/nvim/init.vim' },
+    \ { 'i': '~/dotfiles/nvim/init.vim' },
     \ ]
 " }}}
 
@@ -306,8 +285,7 @@ require('tabline').setup({
 require('lualine').setup {
     options = {
         theme = 'tokyonight',
-        -- theme = neg,
-        section_separators = {'', ''},
+        section_separators = {left = '', right = ''},
         -- component_separators = {'', ''},
         component_separators = {'', ''},
     },

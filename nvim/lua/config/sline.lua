@@ -2,7 +2,6 @@ require('tabline').setup({
     enable = false,
     options = {
         section_separators = {'', ''},
-        -- component_separators = {'', ''},
         component_separators = {'', ''},
     }
 })
@@ -10,9 +9,7 @@ require('tabline').setup({
 require('lualine').setup {
     options = {
         theme = 'tokyonight',
-        -- theme = neg,
         section_separators = {'', ''},
-        -- component_separators = {'', ''},
         component_separators = {'', ''},
     },
     sections = {
@@ -22,7 +19,6 @@ require('lualine').setup {
         },
         lualine_c = {
             {'filename'},
-            -- {'diagnostics', sources = {'lsp'}, sections = {'error', 'warn'}}
             {'diagnostics', sources = {'coc'}, sections = {'error', 'warn'}}
         },
         lualine_x = {'file_format', 'encoding', 'filetype', 'location'},

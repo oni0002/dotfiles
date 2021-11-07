@@ -17,9 +17,9 @@
     // "signature.floatConfig": {
     //     "border": true
     // },
-    "hover.floatConfig": {
-        "border": true
-    },
+    // "hover.floatConfig": {
+    //     "border": true
+    // },
     "suggest.completionItemKindLabels": {
         "keyword": "\uf1de",
         "variable": "\ue79b",

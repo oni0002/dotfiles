@@ -17,7 +17,6 @@ SETUVAR _fish_abbr_aps:sudo\x20apt\x20search
 SETUVAR _fish_abbr_apsr:sudo\x20apt\x20search
 SETUVAR _fish_abbr_apupd:sudo\x20apt\x20update
 SETUVAR _fish_abbr_apupg:sudo\x20apt\x20upgrade
-SETUVAR _fish_abbr_br:brew
 SETUVAR _fish_abbr_brarm:brew\x20autoremove
 SETUVAR _fish_abbr_brcle:brew\x20cleanup
 SETUVAR _fish_abbr_brdoc:brew\x20doctor
