@@ -17,15 +17,15 @@ g.coc_snippet_next = '<c-j>'
 g.coc_snippet_prev = '<c-k>'
 
 cmd([[
-function show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
+  function ShowDocumentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    elseif (coc#rpc#ready())
+      call CocActionAsync('doHover')
+    else
+      execute '!' . &keywordprg . " " . expand('<cword>')
+    endif
+  endfunction
 ]])
 
 -- Highlight the symbol and its references when holding the cursor.
@@ -51,7 +51,7 @@ nest.applyKeymaps({
     {'gy', '<plug>(coc-type-definition)'},
     {'gi', '<plug>(coc-implementation)'},
     {'gr', '<plug>(coc-references)'},
-    {'K', ":call show_documentation()<cr>"},
+    {'K', ":call ShowDocumentation()<cr>"},
     {'<leader>rn', '<plug>(coc-rename)'},
     {'<leader>f', '<plug>(coc-format)'},
     {'<leader>a', '<plug>(coc-codeaction)'},

@@ -1,29 +1,33 @@
 local g = vim.g
-local tree_cb = require('nvim-tree.config').nvim_tree_callback
-local nest = require('nest')
+local cb = require('nvim-tree.config').nvim_tree_callback
 
-require('nvim-tree').setup()
 g.nvim_tree_quit_on_open = 1
-
-g.nvim_tree_bindings = {
-  { key = { '<CR>', 'o', '<2-LeftMouse>' }, cb = tree_cb('edit') },
-  { key = { '<2-RightMouse>', '<C-]>' }, cb = tree_cb('cd') },
-  { key = '<C-v>', cb = tree_cb('vsplit') },
-  { key = '<C-x>', cb = tree_cb('split') },
-  { key = '<C-t>', cb = tree_cb('tabnew') },
-  { key = '<BS>', cb = tree_cb('close_node') },
-  { key = 'R', cb = tree_cb('refresh') },
-  { key = 'a', cb = tree_cb('create') },
-  { key = 'd', cb = tree_cb('remove') },
-  { key = 'r', cb = tree_cb('rename') },
-  { key = 'y', cb = tree_cb('copy') },
-  { key = 'p', cb = tree_cb('paste') },
-  { key = 'Y', cb = tree_cb('copy_path') },
-  { key = '-', cb = tree_cb('dir_up') },
-  { key = 'q', cb = tree_cb('close') },
-}
+require('nvim-tree').setup({
+  view = {
+    mappings = {
+      list = {
+        { key = { '<CR>', 'o', '<2-LeftMouse>' }, cb = cb('edit') },
+        { key = { '<2-RightMouse>', '<C-]>' }, cb = cb('cd') },
+        { key = '<C-v>', cb = cb('vsplit') },
+        { key = '<C-x>', cb = cb('split') },
+        { key = '<C-t>', cb = cb('tabnew') },
+        { key = '<BS>', cb = cb('close_node') },
+        { key = 'R', cb = cb('refresh') },
+        { key = 'a', cb = cb('create') },
+        { key = 'd', cb = cb('remove') },
+        { key = 'r', cb = cb('rename') },
+        { key = 'y', cb = cb('copy') },
+        { key = 'p', cb = cb('paste') },
+        { key = 'Y', cb = cb('copy_path') },
+        { key = '-', cb = cb('dir_up') },
+        { key = 'q', cb = cb('close') },
+      }
+    }
+  }
+})
 
 -- maps
+local nest = require('nest')
 nest.applyKeymaps({
     {'<c-e>', '<cmd>NvimTreeToggle<cr>'}
 })

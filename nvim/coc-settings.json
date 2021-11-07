@@ -91,32 +91,4 @@
         "%f"
     ],
     // "highlight.colorNames.enable": false,
-    "explorer.icon.enableNerdfont": true,
-    "explorer.quitOnOpen": true,
-    "explorer.keyMappings.global": {
-        "i": false, // cancel default mapkey
-        "<tab>": "actionMenu",
-        "<cr>": [
-            "expandable?",
-            [
-                "expanded?",
-                "collapse",
-                "expand"
-            ],
-            "open"
-        ],
-        "<bs>": "gotoParent",
-        "<c-s>": "open:split",
-        "<c-v>": "open:vsplit",
-        "<c-t>": "open:tab",
-        "d": "delete",
-        "a": "addFile",
-        "A": "addDirectory",
-        "r": "rename",
-        ".": "toggleHidden",
-        "R": "refresh",
-        "?": "help",
-        "q": "quit",
-        "<esc>": "esc"
-    }
 }
