@@ -26,7 +26,7 @@ require('nvim-tree').setup({
   }
 })
 
--- maps
+-- Maps
 local nest = require('nest')
 nest.applyKeymaps({
     {'<c-e>', '<cmd>NvimTreeToggle<cr>'}

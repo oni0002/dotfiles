@@ -1,5 +1,4 @@
-local nest = require('nest')
-
+require('telescope').load_extension('coc')
 require('telescope').setup({
   defaults = {
     sorting_strategy = 'ascending',
@@ -9,6 +8,8 @@ require('telescope').setup({
   },
 })
 
+-- Maps
+local nest = require('nest')
 nest.applyKeymaps({
     prefix = '<leader><leader>',
     {'f', '<cmd>Telescope find_files<cr>'},
@@ -20,6 +21,7 @@ nest.applyKeymaps({
     {'m', '<cmd>Telescope keymaps<cr>'},
     {'?', '<cmd>Telescope help_tags<cr>'},
     {'c;', '<cmd>Telescope coc commands<cr>'},
-    {'cd', '<cmd>Telescope coc diagnostics<cr>'},
-    {'ca', '<cmd>Telescope coc code_actions<cr>'},
+    {'d', '<cmd>Telescope coc diagnostics<cr>'},
+    {'s', '<cmd>Telescope coc document_symbols<cr>'},
+    {'a', '<cmd>Telescope coc code_actions<cr>'},
 })

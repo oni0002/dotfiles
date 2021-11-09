@@ -50,8 +50,9 @@ l: lines
 m: maps
 ?: helps
 c;: coc commands
-cd: diagnostics
-ca: code actions
+d: diagnostics
+s: document symbols
+a: code actions
 ```
 
 ### Nvimtree

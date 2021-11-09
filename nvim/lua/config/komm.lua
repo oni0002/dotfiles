@@ -7,7 +7,7 @@ require('kommentary.config').configure_language('python', {
   single_line_comment_string = '#',
 })
 
--- map
+-- Maps
 local nest = require('nest')
 
 nest.applyKeymaps({

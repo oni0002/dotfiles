@@ -14,9 +14,9 @@
     // "diagnostic.floatConfig": {
     //     "border": true
     // },
-    // "signature.floatConfig": {
-    //     "border": true
-    // },
+    "signature.floatConfig": {
+        "border": true
+    },
     "hover.floatConfig": {
         "border": true
     },
@@ -81,14 +81,14 @@
     "python.formatting.provider": "black",
     "python.formatting.blackArgs": [
         "-l 120"
-    ],
-    "texlab.build.args": [
-        "-interaction=nonstopmode",
-        "-synctex=1",
-        "-file-line-error",
-        "-lualatex",
-        "-outdir=out",
-        "%f"
-    ],
+    ]
+    // "texlab.build.args": [
+    //     "-interaction=nonstopmode",
+    //     "-synctex=1",
+    //     "-file-line-error",
+    //     "-lualatex",
+    //     "-outdir=out",
+    //     "%f"
+    // ],
     // "highlight.colorNames.enable": false,
 }
