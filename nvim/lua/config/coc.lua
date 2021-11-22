@@ -5,11 +5,13 @@ g.coc_global_extensions = {
   'coc-snippets',
   'coc-lists',
   'coc-pairs',
-  'coc-lua',
   'coc-json',
   'coc-git',
   'coc-pyright',
+  'coc-pydocstring',
   'coc-tabnine',
+  'coc-lightbulb',
+  'coc-markmap',
 }
 g.coc_borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'}
 g.coc_snippet_next = '<tab>'
@@ -34,9 +36,7 @@ augroup end
 ]])
 
 -- Maps
-local nest = require('nest')
-
-nest.applyKeymaps({
+require('nest').applyKeymaps({
   {mode = 'i', options = {expr = true}, {
     {'<tab>', "pumvisible() ? '<c-n>' : '<tab>'"},
     {'<s-tab>', "pumvisible() ? '<c-p>' : '<c-h>'"},

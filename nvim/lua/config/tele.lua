@@ -9,8 +9,7 @@ require('telescope').setup({
 })
 
 -- Maps
-local nest = require('nest')
-nest.applyKeymaps({
+require('nest').applyKeymaps({
     prefix = '<leader><leader>',
     {'f', '<cmd>Telescope find_files<cr>'},
     {'h', '<cmd>Telescope oldfiles<cr>'},

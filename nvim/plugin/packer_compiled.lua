@@ -118,11 +118,6 @@ _G.packer_plugins = {
     path = "/Users/ly/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  ["tabline.nvim"] = {
-    loaded = true,
-    path = "/Users/ly/.local/share/nvim/site/pack/packer/start/tabline.nvim",
-    url = "https://github.com/kdheepak/tabline.nvim"
-  },
   ["telescope-coc.nvim"] = {
     loaded = true,
     path = "/Users/ly/.local/share/nvim/site/pack/packer/start/telescope-coc.nvim",
@@ -148,10 +143,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: vim-startify
-time([[Config for vim-startify]], true)
-try_loadstring("\27LJ\2\n,\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\17config.start\frequire\0", "config", "vim-startify")
-time([[Config for vim-startify]], false)
+-- Config for: coc.nvim
+time([[Config for coc.nvim]], true)
+try_loadstring("\27LJ\2\n*\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\15config.coc\frequire\0", "config", "coc.nvim")
+time([[Config for coc.nvim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\2\n+\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\16config.tele\frequire\0", "config", "telescope.nvim")
@@ -168,10 +163,10 @@ time([[Config for lualine.nvim]], false)
 time([[Config for kommentary]], true)
 try_loadstring("\27LJ\2\n+\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\16config.komm\frequire\0", "config", "kommentary")
 time([[Config for kommentary]], false)
--- Config for: coc.nvim
-time([[Config for coc.nvim]], true)
-try_loadstring("\27LJ\2\n*\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\15config.coc\frequire\0", "config", "coc.nvim")
-time([[Config for coc.nvim]], false)
+-- Config for: vim-startify
+time([[Config for vim-startify]], true)
+try_loadstring("\27LJ\2\n,\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\17config.start\frequire\0", "config", "vim-startify")
+time([[Config for vim-startify]], false)
 if should_profile then save_profiles() end
 
 end)

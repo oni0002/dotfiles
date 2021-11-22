@@ -56,7 +56,7 @@ require('packer').startup(function(use)
   })
   use({
     'hoob3rt/lualine.nvim',
-    requires = { 'kdheepak/tabline.nvim', 'kyazdani42/nvim-web-devicons' },
+    requires = {'kyazdani42/nvim-web-devicons'},
     config = function() require('config.sline') end
   })
   use({
@@ -80,9 +80,7 @@ g.tokyonight_style = 'night'
 cmd([[colorscheme tokyonight]])
 
 -- Maps
-local nest = require('nest')
-
-nest.applyKeymaps({
+require('nest').applyKeymaps({
     {mode = 'n', {
         {'<c-s>', '<cmd>update<cr>'},  -- save
         {'<c-q>', '<cmd>q<cr>'},  -- close
