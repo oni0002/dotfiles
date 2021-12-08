@@ -1,14 +1,16 @@
-vim.g.startify_change_to_dir = 0
-vim.g.startify_relative_path = 1
-vim.g.startify_use_env = 1
-vim.g.startify_custom_header = [[startify#center(split(system('figlet -f ntgreek -w 100 neovim'), '\n'))]]
+local g = vim.g
 
-vim.g.startify_lists = {
+g.startify_change_to_dir = 0
+g.startify_relative_path = 1
+g.startify_use_env = 1
+g.startify_custom_header = [[startify#center(split(system('figlet -f ntgreek -w 100 neovim'), '\n'))]]
+
+g.startify_lists = {
   {type = 'commands', header = {'   Commands'}},
   {type = 'bookmarks', header = {'   Bookmarks'}},
 }
 -- commands
-vim.g.startify_commands = {
+g.startify_commands = {
   {f = {'Find files', ':Telescope find_files'}},
   {h = {'Recentry', ':Telescope oldfiles'}},
   {w = {'Find words', ':Telescope live_grep'}},
@@ -16,6 +18,6 @@ vim.g.startify_commands = {
   {uc = {'Update Coc', ':CocUpdate'}},
 }
 -- bookmarks
-vim.g.startify_bookmarks = {
+g.startify_bookmarks = {
   {c = '~/.config/nvim/init.lua'},
 }

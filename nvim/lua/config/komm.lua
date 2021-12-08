@@ -9,7 +9,7 @@ require('kommentary.config').configure_language('python', {
 
 -- Maps
 require('nest').applyKeymaps({
-    options = {noremap = false},
-    {mode = 'n', {'<leader>c', '<Plug>kommentary_line_default'}},
-    {mode = 'x', {'<leader>c', '<Plug>kommentary_visual_default'}},
+  options = {noremap = false},
+  {mode = 'n', {'<leader>c', '<Plug>kommentary_line_default'}},
+  {mode = 'x', {'<leader>c', '<Plug>kommentary_visual_default'}},
 })

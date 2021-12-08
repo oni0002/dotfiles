@@ -72,12 +72,17 @@ require('packer').startup(function(use)
   use('ggandor/lightspeed.nvim')
   use({'b3nj5m1n/kommentary', config = function() require('config.komm') end})
   use({'mhinz/vim-startify', config = function () require('config.start') end})
-  use({'folke/tokyonight.nvim', branch ='main'})
+  use({
+    'VonHeikemen/fine-cmdline.nvim',
+    requires = {'MunifTanjim/nui.nvim'},
+    config = function() require('config.finecmd') end
+  })
+  -- use({'folke/tokyonight.nvim', branch ='main'})
+  use({'sainnhe/everforest'})
 end)
 
 -- Color settings
-g.tokyonight_style = 'night'
-cmd([[colorscheme tokyonight]])
+cmd([[colorscheme everforest]])
 
 -- Maps
 require('nest').applyKeymaps({
@@ -92,7 +97,7 @@ require('nest').applyKeymaps({
         {'<c-k>', '<c-w>k'},
         {'<c-l>', '<c-w>l'},
         {'Y', 'y$'},  -- make Y more natural
-        {';', ':', options = {silent = false}},  -- enter C
+        -- {';', ':', options = {silent = false}},  -- enter C -- replaced with fine-cmdline
         {':', ';'},
         {'<esc>', '<cmd>noh<cr><esc>'},  -- clear hl
         {'U', '<c-r>'},  -- redo

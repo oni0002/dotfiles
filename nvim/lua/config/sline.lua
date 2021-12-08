@@ -1,6 +1,6 @@
 require('lualine').setup({
   options = {
-    theme = 'tokyonight',
+    theme = 'everforest',
     section_separators = {left = '', right = ''},
     component_separators = '',
   },
