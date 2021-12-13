@@ -2,17 +2,15 @@
 
 ## N
 
-```
-c-s: save
-c-q: close
-c-wt, s, v: new tab, split, vsplit
-c-h, j, k, l: switch window
-;: enter C
-u, U: undo/redo
-spc-z: fold/expand
-]b, [b: next/prev buffer
-]t, [t: next/prev tab
-```
+- `c-s` save
+- `c-q` close
+- `c-wt, s, v` new tab, split, vsplit
+- `c-h, j, k, l` switch window
+- `;` enter C
+- `u, U` undo/redo
+- `spc-z` fold/expand
+- `]b, [b` next/prev buffer
+- `]t, [t` next/prev tab
 
 ## I
 
