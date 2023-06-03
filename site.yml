@@ -1,0 +1,7 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  become: no
+  
+  tasks:
+    - include_tasks: link.yml
