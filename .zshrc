@@ -1,6 +1,3 @@
-# when use fish, uncomment below.
-# exec fish
-
 ### Added by Zinit's installer
 source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
@@ -11,10 +8,6 @@ autoload -Uz _zinit
 zinit light zsh-users/zsh-autosuggestions
 # syntax highlight
 zinit light zdharma/fast-syntax-highlighting
-# abbr
-zinit light olets/zsh-abbr
-# pure prompt
-zinit light sindresorhus/pure
 
 # history
 HISTFILE=~/.zsh-history
@@ -54,18 +47,3 @@ setopt nobeep
 zstyle ':completion:*:default' menu select=1
 # also complete uppercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-
-. $HOME/.asdf/asdf.sh
-eval "$(asdf exec direnv hook zsh)"
-
-# brew
-# export PATH="/usr/local/sbin:$PATH"
-# pyenv
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init -)"
-# node
-# export PATH=$HOME/.nodebrew/current/bin:$PATH
-
-source /Users/ly/.config/broot/launcher/bash/br
