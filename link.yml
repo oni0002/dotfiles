@@ -4,4 +4,5 @@
     dest: '{{ item.dest }}'
     state: link
     force: true
+    follow: false
   with_items: '{{ DOTFILES }}'
