@@ -5,3 +5,6 @@
   
   tasks:
     - include_tasks: link.yml
+
+  vars_files:
+    - vars.yml
