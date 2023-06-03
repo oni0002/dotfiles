@@ -10,6 +10,7 @@ fi
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
+### End Zinit block
 
 # suggestion
 zinit light zsh-users/zsh-autosuggestions
@@ -55,3 +56,5 @@ zstyle ':completion:*:default' menu select=1
 # also complete uppercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
+# Starship
+eval "$(starship init zsh)"
