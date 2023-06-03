@@ -10,12 +10,14 @@ fi
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
-### End Zinit block
+### End of Zinit block
 
 # suggestion
 zinit light zsh-users/zsh-autosuggestions
+# completion
+zinit light zsh-users/zsh-autosuggestions
 # syntax highlight
-zinit light zdharma/fast-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
 
 # history
 HISTFILE=~/.zsh-history
