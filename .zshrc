@@ -60,3 +60,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # Starship
 eval "$(starship init zsh)"
+
+# asdf
+. /usr/local/opt/asdf/libexec/asdf.sh
